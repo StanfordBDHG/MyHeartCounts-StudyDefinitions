@@ -6,7 +6,7 @@
 // SPDX-License-Identifier: MIT
 //
 
-// swiftlint:disable file_types_order
+// swiftlint:disable closure_body_length
 
 import Foundation
 import MHCStudyDefinition
@@ -47,7 +47,7 @@ let mhcStudyDefinition = StudyDefinition(
         shortExplanationText: "Improve your cardiovascular health",
         studyDependency: nil,
         participationCriterion: .ageAtLeast(18) && (.isFromRegion(.unitedStates) || .isFromRegion(.unitedKingdom)),
-        enrollmentConditions: .requiresInvitation(verificationEndpoint: URL(string: "https://mhc.spezi.stanford.edu/api/invite/")!),
+        enrollmentConditions: .none,
         consentFileRef: .init(category: .consent, filename: "Consent", fileExtension: "md")
     ),
     components: [
@@ -117,7 +117,7 @@ let mhcStudyDefinition = StudyDefinition(
                 ],
                 other: [
                     SampleType.workout,
-                    SampleType.electrocardiogram,
+                    SampleType.electrocardiogram
                 ] as [any AnySampleType]
             ),
             historicalDataCollection: .enabled(.last(DateComponents(year: 10)))
@@ -198,14 +198,14 @@ let mhcStudyDefinition = StudyDefinition(
         StudyDefinition.ComponentSchedule(
             id: .ecgScheduleInitial,
             componentId: .ecgComponent,
-            scheduleDefinition: .once(.event(.activation, offsetInDays: 1, time: .noon)), // TODO time here?
+            scheduleDefinition: .once(.event(.activation, offsetInDays: 1, time: .noon)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task)
         )
         StudyDefinition.ComponentSchedule(
             id: .ecgScheduleRepeat,
             componentId: .ecgComponent,
-            scheduleDefinition: .once(.event(.completedTask(componentId: .ecgComponent), offsetInDays: 5, time: .noon)), // TODO time here?
+            scheduleDefinition: .once(.event(.completedTask(componentId: .ecgComponent), offsetInDays: 5, time: .noon)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task)
         )
@@ -268,7 +268,7 @@ let mhcStudyDefinition = StudyDefinition(
         StudyDefinition.ComponentSchedule(
             id: .sixMinWalkTestSchedule,
             componentId: .sixMinWalkTestComponent,
-            // TODO could this (with a 4-day offset) subsume the schedule directly above?)
+            // Q: could this (with a 4-day offset) subsume the schedule directly above?)
             scheduleDefinition: .repeated(.monthly(interval: 1, day: nil, hour: 6, minute: 0)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
