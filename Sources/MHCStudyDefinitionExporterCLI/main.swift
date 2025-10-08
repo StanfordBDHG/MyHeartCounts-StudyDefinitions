@@ -23,7 +23,7 @@ do {
 } catch StudyBundle.CreateBundleError.failedValidation(let issues) {
     print("Failed Validation:")
     for (idx, issue) in issues.enumerated() {
-        print("\n[\(String(format: "%02li", idx + 1))] \(issue)")
+        fputs("\n[\(String(format: "%02li", idx + 1))] \(issue)\n", stderr)
     }
     exit(EXIT_FAILURE)
 } catch {
