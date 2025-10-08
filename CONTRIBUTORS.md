@@ -1,17 +1,16 @@
 <!--
-                  
-#
-# This source file is part of the TemplatePackage open source project
-#
-# SPDX-FileCopyrightText: 2022 Stanford University and the project authors (see CONTRIBUTORS.md)
-#
-# SPDX-License-Identifier: MIT
-# 
-             
+
+This source file is part of the My Heart Counts open source project
+
+SPDX-FileCopyrightText: 2025 Stanford University
+
+SPDX-License-Identifier: MIT
+
 -->
 
-TemplatePackage contributors
-====================
+MyHeartCounts-StudyDefinitions Contributors
+=================================
 
-* [Paul Schmiedmayer](https://github.com/PSchmiedmayer)
-* [Vishnu Ravi](https://github.com/vishnuravi)
+- [Lukas Kollmer](https://github.com/lukaskollmer)
+- [Paul Goldschmidt](https://github.com/PaulGoldschmidt)
+- [Paul Schmiedmayer](https://github.com/PSchmiedmayer)
