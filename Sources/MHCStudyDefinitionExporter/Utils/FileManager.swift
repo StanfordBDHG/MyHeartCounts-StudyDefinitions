@@ -82,8 +82,6 @@ extension FileManager {
             throw ArchiveOperationError("Unable to create dstFilePath")
         }
         
-//        let dstFilename = String(archiveUrl.lastPathComponent.dropLast(".aar".count))
-        
         guard let archiveFilePath = FilePath(archiveUrl) else {
             throw ArchiveOperationError("Unable to create FilePath for archive file")
         }
