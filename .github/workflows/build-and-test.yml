@@ -39,7 +39,7 @@ jobs:
       artifactname: ${{ format('MHCStudyDefinition-Package-{0}-{1}.xcresult', matrix.platform.name, matrix.config) }}
   uploadcoveragereport:
     name: Upload Coverage Report
-    needs: [package_tests, ui_tests]
+    needs: [package_tests]
     uses: StanfordBDHG/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
     with:
       coveragereports: MHCStudyDefinition-Package-*.xcresult
