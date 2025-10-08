@@ -7,13 +7,21 @@
 //
 
 import Foundation
+import MHCStudyDefinitionExporter
 import Testing
 
 
 @Suite
 struct MHCStudyDefinitionExporterTests {
     @Test
-    func heyyy() {
-        #expect(true)
+    func export() throws {
+        let fileManager = FileManager.default
+        let dstDir = URL.temporaryDirectory.appending(component: UUID().uuidString, directoryHint: .isDirectory)
+        try fileManager.createDirectory(at: dstDir, withIntermediateDirectories: true)
+        let archiveUrl = try MHCStudyDefinitionExporter.export(to: dstDir)
+        #expect(try fileManager.itemExists(at: archiveUrl))
+        
+        // let's clean up after ourselves
+        try? fileManager.removeItem(at: dstDir)
     }
 }

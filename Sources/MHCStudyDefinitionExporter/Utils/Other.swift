@@ -14,7 +14,9 @@ func tryUnwrap<T>(_ value: T?, _ message: @autoclosure () -> String) throws -> T
     if let value {
         return value
     } else {
-        throw StudyExporterError(message: message())
+        throw NSError(domain: "edu.stanford.MHCStudyDefinitionExporter", code: 0, userInfo: [
+            NSLocalizedDescriptionKey: message()
+        ])
     }
 }
 

@@ -22,10 +22,11 @@ let package = Package(
     ],
     products: [
         .library(name: "MHCStudyDefinition", targets: ["MHCStudyDefinition"]),
-        .executable(name: "MHCStudyDefinitionExporter", targets: ["MHCStudyDefinitionExporter"])
+        .library(name: "MHCStudyDefinitionExporter", targets: ["MHCStudyDefinitionExporter"]),
+        .executable(name: "MHCStudyDefinitionExporterCLI", targets: ["MHCStudyDefinitionExporterCLI"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/SpeziStudy.git", revision: "2dec2daf02da95afe00c2e79abca0ed8d0b15e37"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziStudy.git", revision: "280936f77ade544a9ea4aedc52e529a7eed08ee9"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.4.0")
     ],
     targets: [
@@ -35,7 +36,7 @@ let package = Package(
                 .product(name: "SpeziStudyDefinition", package: "SpeziStudy")
             ]
         ),
-        .executableTarget(
+        .target(
             name: "MHCStudyDefinitionExporter",
             dependencies: [
                 "MHCStudyDefinition",
@@ -51,9 +52,21 @@ let package = Package(
             ],
             swiftSettings: [.defaultIsolation(MainActor.self)]
         ),
+        .executableTarget(
+            name: "MHCStudyDefinitionExporterCLI",
+            dependencies: [
+                "MHCStudyDefinition",
+                "MHCStudyDefinitionExporter",
+                .product(name: "SpeziStudyDefinition", package: "SpeziStudy")
+            ],
+            swiftSettings: [.defaultIsolation(MainActor.self)]
+        ),
         .testTarget(
             name: "MHCStudyDefinitionExporterTests",
-            dependencies: ["MHCStudyDefinition"]
+            dependencies: [
+                "MHCStudyDefinition",
+                "MHCStudyDefinitionExporter"
+            ]
         )
     ]
 )

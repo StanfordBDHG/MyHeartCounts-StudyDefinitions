@@ -12,21 +12,15 @@ import SpeziLocalization
 @_spi(APISupport) import SpeziStudyDefinition
 
 
-struct StudyExporterError: Error {
-    let message: String
-}
-
-
-func export() throws {
-    let fileManager = FileManager.default
-    guard let outputDir = CommandLine.arguments.firstIndex(of: "-o")
-        .flatMap({ CommandLine.arguments[safe: $0 + 1] })
-        .map({ URL(filePath: $0, relativeTo: .currentDirectory()).absoluteURL }) else {
-            throw StudyExporterError(message: "Missing '-o outputDir' option")
-    }
+/// Exports a `mhcStudyDefinition.spezistudybundle.aar` file to the specified `outputDir`.
+@discardableResult
+public func export(to outputDir: URL) throws -> URL {
     print("output dir: \(outputDir.path())")
+    let fileManager = FileManager.default
     guard fileManager.itemExists(at: outputDir) && fileManager.isDirectory(at: outputDir) else {
-        throw StudyExporterError(message: "Output directory '\(outputDir.path())' does not exist.")
+        throw NSError(domain: "edu.stanford.MHCStudyDefinitionExporter", code: 0, userInfo: [
+            NSLocalizedDescriptionKey: "Output directory '\(outputDir.path())' does not exist."
+        ])
     }
     let filename = "mhcStudyBundle"
     let bundleUrl = outputDir.appendingPathComponent(filename, conformingTo: .speziStudyBundle)
@@ -57,16 +51,7 @@ func export() throws {
         }
     }
     
-    // Create the StudyBundle, handling any validation errors if applicable.
-    do {
-        _ = try StudyBundle.writeToDisk(at: bundleUrl, definition: mhcStudyDefinition, files: inputFiles)
-    } catch StudyBundle.CreateBundleError.failedValidation(let issues) {
-        print("Failed Validation:")
-        for (idx, issue) in issues.enumerated() {
-            print("\n[\(String(format: "%02li", idx + 1))] \(issue)")
-        }
-        exit(EXIT_FAILURE)
-    }
+    _ = try StudyBundle.writeToDisk(at: bundleUrl, definition: mhcStudyDefinition, files: inputFiles)
     
     // Archive into .aar file
     let archiveUrl = bundleUrl.appendingPathExtension(for: .appleArchive)
@@ -74,16 +59,5 @@ func export() throws {
     try fileManager.archiveDirectory(at: bundleUrl, to: archiveUrl)
     print("Wrote archive to '\(archiveUrl)'")
     try? fileManager.removeItem(at: bundleUrl)
-}
-
-
-do {
-    try export()
-    exit(EXIT_SUCCESS)
-} catch let error as StudyExporterError {
-    print("Export failed: \(error.message)")
-    exit(EXIT_FAILURE)
-} catch {
-    print("Export failed: \(error)")
-    exit(EXIT_FAILURE)
+    return archiveUrl
 }
