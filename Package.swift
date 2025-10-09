@@ -26,7 +26,7 @@ let package = Package(
         .executable(name: "MHCStudyDefinitionExporterCLI", targets: ["MHCStudyDefinitionExporterCLI"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/SpeziStudy.git", revision: "280936f77ade544a9ea4aedc52e529a7eed08ee9"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziStudy.git", revision: "5fdb7df26373b8be8ef054061fda9da5e8c176a3"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.4.0")
     ],
     targets: [
