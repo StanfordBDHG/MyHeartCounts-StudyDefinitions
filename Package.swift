@@ -65,7 +65,8 @@ let package = Package(
             name: "MHCStudyDefinitionExporterTests",
             dependencies: [
                 "MHCStudyDefinition",
-                "MHCStudyDefinitionExporter"
+                "MHCStudyDefinitionExporter",
+                .product(name: "SpeziStudyDefinition", package: "SpeziStudy")
             ]
         )
     ]
