@@ -22,6 +22,6 @@ concurrency:
 jobs:
   package_tests:
     name: Verify Study Bundle Integrity
-    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@lukas/use_xcbeautify
+    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
       customcommand: 'swift test'
