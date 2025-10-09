@@ -17,7 +17,21 @@ SPDX-License-Identifier: MIT
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordBDHG%2FMyHeartCounts-StudyDefinitions%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/StanfordBDHG/MyHeartCounts-StudyDefinitions)
 
 
+## Overview
 Study Definitions and supporting code for the [My Heart Counts](https://github.com/StanfordBDHG/MyHeartCounts-iOS) iOS application.
+
+This package consists of 3 (three) targets:
+- `MHCStudyDefinition` contains supporting code that is shared between the MHC app and the study definition, e.g., static properties defining custom active tasks;
+- `MHCStudyDefinitionExporter` implements an `export(to:)` function that writes a study bundle archive to the file system;
+- `MHCStudyDefinitionExporterCLI` is a CLI tool that calls `export(to:)` to export a study bundle archive.
+
+Note that the package does not make the actual study definition available as an SPM package; this is intentional.
+Instead, the package only implements the code that exports the study bundle, in a format the MHC app can then download from a server and consume.
+
+## Testing and Study Defitition Integrity Validation
+The `swift test` command may be used to run a dry-run export of the study definition, which will fail if the integrity verification step performed as part of the export finds any issues with the study definition (e.g., invalid references, invalid questionnaire definitions, etc).
+
+The repo's CI setup performs this check on every push, to ensure that only valid study definitions can be merged.
 
 ## License
 This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordBDHG/MyHeartCounts-StudyDefinitions/tree/main/LICENSES) for more information.
