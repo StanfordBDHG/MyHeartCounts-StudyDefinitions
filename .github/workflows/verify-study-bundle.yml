@@ -1,0 +1,28 @@
+#
+# This source file is part of the Stanford Biodesign Digital Health Group Swift Template Package open source project
+#
+# SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+#
+# SPDX-License-Identifier: MIT
+#
+
+name: Verify Study Bundle
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: Verify-Study-Bundle-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify_study_bundle:
+    name: Verify Study Bundle Integrity
+    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    with:
+      runsonlabels: '["macOS", "self-hosted"]'
+      customcommand: 'swift test'

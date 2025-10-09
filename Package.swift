@@ -1,10 +1,9 @@
-// swift-tools-version:6.0
-
+// swift-tools-version:6.2
 //
-// This source file is part of the TemplatePackage open source project
+// This source file is part of the My Heart Counts open source project
 // 
-// SPDX-FileCopyrightText: 2022 Stanford University and the project authors (see CONTRIBUTORS.md)
-// 
+// SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+//
 // SPDX-License-Identifier: MIT
 //
 
@@ -13,49 +12,62 @@ import PackageDescription
 
 
 let package = Package(
-    name: "TemplatePackage",
+    name: "MHCStudyDefinition",
     platforms: [
-        .iOS(.v17),
-        .watchOS(.v10),
-        .visionOS(.v1),
-        .tvOS(.v17),
-        .macOS(.v14),
-        .macCatalyst(.v17)
+        .iOS(.v18),
+        .watchOS(.v11),
+        .visionOS(.v2),
+        .macOS(.v15),
+        .macCatalyst(.v18)
     ],
     products: [
-        .library(name: "TemplatePackage", targets: ["TemplatePackage"])
+        .library(name: "MHCStudyDefinition", targets: ["MHCStudyDefinition"]),
+        .library(name: "MHCStudyDefinitionExporter", targets: ["MHCStudyDefinitionExporter"]),
+        .executable(name: "MHCStudyDefinitionExporterCLI", targets: ["MHCStudyDefinitionExporterCLI"])
     ],
     dependencies: [
-    ] + swiftLintPackage(),
+        .package(url: "https://github.com/StanfordSpezi/SpeziStudy.git", from: "0.1.13"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.4.0")
+    ],
     targets: [
         .target(
-            name: "TemplatePackage",
-            plugins: [] + swiftLintPlugin()
+            name: "MHCStudyDefinition",
+            dependencies: [
+                .product(name: "SpeziStudyDefinition", package: "SpeziStudy")
+            ]
+        ),
+        .target(
+            name: "MHCStudyDefinitionExporter",
+            dependencies: [
+                "MHCStudyDefinition",
+                .product(name: "SpeziStudyDefinition", package: "SpeziStudy"),
+                .product(name: "SpeziStudy", package: "SpeziStudy"),
+                .product(name: "SpeziLocalization", package: "SpeziFoundation")
+            ],
+            resources: [
+                .copy("Resources/consent"),
+                .copy("Resources/article"),
+                .copy("Resources/questionnaire"),
+                .copy("Resources/hhdExplainer")
+            ],
+            swiftSettings: [.defaultIsolation(MainActor.self)]
+        ),
+        .executableTarget(
+            name: "MHCStudyDefinitionExporterCLI",
+            dependencies: [
+                "MHCStudyDefinition",
+                "MHCStudyDefinitionExporter",
+                .product(name: "SpeziStudyDefinition", package: "SpeziStudy")
+            ],
+            swiftSettings: [.defaultIsolation(MainActor.self)]
         ),
         .testTarget(
-            name: "TemplatePackageTests",
+            name: "MHCStudyDefinitionExporterTests",
             dependencies: [
-                .target(name: "TemplatePackage")
-            ],
-            plugins: [] + swiftLintPlugin()
+                "MHCStudyDefinition",
+                "MHCStudyDefinitionExporter",
+                .product(name: "SpeziStudyDefinition", package: "SpeziStudy")
+            ]
         )
     ]
 )
-
-
-func swiftLintPlugin() -> [Target.PluginUsage] {
-    // Fully quit Xcode and open again with `open --env SPEZI_DEVELOPMENT_SWIFTLINT /Applications/Xcode.app`
-    if ProcessInfo.processInfo.environment["SPEZI_DEVELOPMENT_SWIFTLINT"] != nil {
-        [.plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")]
-    } else {
-        []
-    }
-}
-
-func swiftLintPackage() -> [PackageDescription.Package.Dependency] {
-    if ProcessInfo.processInfo.environment["SPEZI_DEVELOPMENT_SWIFTLINT"] != nil {
-        [.package(url: "https://github.com/realm/SwiftLint.git", from: "0.55.1")]
-    } else {
-        []
-    }
-}
