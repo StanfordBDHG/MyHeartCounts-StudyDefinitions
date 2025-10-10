@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "id": "1FF524AE-C159-496A-B0BD-E81B2FAD3E8B",
   "title": "GAD-7",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },

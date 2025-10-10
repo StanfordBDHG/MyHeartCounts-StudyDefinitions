@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "en-US",
+  "language": "es-US",
   "id": "05E37E76-1308-456C-815D-90BCAA26814F",
   "title": "WHO-5",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "en-US",
-        "display": "English"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },

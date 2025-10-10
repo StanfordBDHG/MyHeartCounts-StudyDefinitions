@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "id": "09BE8C43-4501-4861-B6C9-A15F94BE6E14",
   "title": "Riesgo Cardíaco",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },

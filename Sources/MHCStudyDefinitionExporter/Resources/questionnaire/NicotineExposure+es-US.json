@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "id": "9D384C8A-897C-440C-8B04-B2BD622D3423",
   "title": "Panel - Tabaquismo",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },
@@ -39,7 +39,7 @@
   "url": "https://myheartcounts.stanford.edu/fhir/survey/nicotineExposure",
   "item": [
     {
-      "linkId": "1a18f004-e6ab-4ee8-d5b2-284389d15e14",
+      "linkId": "dcb2277e-fe96-4f45-844a-ef58a9516380",
       "type": "choice",
       "text": "¿Cuál es su estado de tabaquismo?",
       "required": false,

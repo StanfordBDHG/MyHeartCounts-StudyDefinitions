@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "title": "Actividad/Aptitud Física",
   "status": "draft",
   "meta": {
@@ -10,8 +10,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },

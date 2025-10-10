@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "id": "A6F08E4E-519C-4E49-B1F7-EE2BDA12AFC7",
   "title": "Medida de Adecuación del Ejercicio",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },

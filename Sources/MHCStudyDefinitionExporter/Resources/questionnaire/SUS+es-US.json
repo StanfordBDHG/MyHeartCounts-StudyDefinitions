@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "en-US",
+  "language": "es-US",
   "id": "0BB5A269-14F2-4597-8D30-7C96C22C2CC3",
   "title": "Encuesta de Usabilidad del Sistema",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "en-US",
-        "display": "English"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },
