@@ -70,6 +70,14 @@
         },
         {
           "valueCoding": {
+            "id": "682757ef-61fb-4fc9-e72b-82d7969c3245",
+            "code": "quit-<1-year-ago",
+            "system": "urn:uuid:049cbbd0-02fa-4fcd-83a7-65a112c1f607",
+            "display": "Quit less than 1 year ago"
+          }
+        },
+        {
+          "valueCoding": {
             "id": "67c56c6e-d9d0-4f7a-937c-3b2f0f52b79a",
             "code": "light-smoker/vaper-(<10/day)",
             "system": "urn:uuid:049cbbd0-02fa-4fcd-83a7-65a112c1f607",

@@ -126,12 +126,6 @@
                 "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2",
                 "display": "Strongly Agree "
               }
-            },
-            {
-              "valueCoding": {
-                "id": "313586ab-ee02-42b8-8445-652203a552b9",
-                "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2"
-              }
             }
           ]
         },
@@ -260,12 +254,6 @@
                 "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2",
                 "display": "Extremely beneficial for my health"
               }
-            },
-            {
-              "valueCoding": {
-                "id": "bbff4709-6a31-4f3d-8b31-c62d4b68f601",
-                "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2"
-              }
             }
           ]
         },
@@ -330,12 +318,6 @@
                 "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2",
                 "display": "Decreases my risk very much"
               }
-            },
-            {
-              "valueCoding": {
-                "id": "bbff4709-6a31-4f3d-8b31-c62d4b68f601",
-                "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2"
-              }
             }
           ]
         },
@@ -391,14 +373,6 @@
                 "code": "weakening-moderately",
                 "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2",
                 "display": "Weakening moderately"
-              }
-            },
-            {
-              "valueCoding": {
-                "id": "75a08637-e26b-4f1b-8649-7ea01c650280",
-                "code": "decreases-my-risk-very-much",
-                "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2",
-                "display": "Decreases my risk very much"
               }
             },
             {

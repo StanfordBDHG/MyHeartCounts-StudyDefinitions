@@ -299,7 +299,7 @@
               "valueCoding": {
                 "id": "571ba8fb-8d81-4339-8101-64e5ad7dcbf6",
                 "code": "decreases-my-risk-slightly",
-                "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a 0bc2",
+                "system": "urn:uuid:bf786b8a-280e-4bc2-a897-f06b739a0bc2",
                 "display": "Disminuye ligeramente mi riesgo"
               }
             },

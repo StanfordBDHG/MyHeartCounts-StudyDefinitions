@@ -3,6 +3,7 @@
   "language": "en-US",
   "title": "Activity/Fitness",
   "status": "draft",
+  "id": "990CA274-07E0-4EEE-ACFB-0B8FF6900695",
   "meta": {
     "profile": [
       "http://spezi.health/fhir/StructureDefinition/sdf-Questionnaire"
