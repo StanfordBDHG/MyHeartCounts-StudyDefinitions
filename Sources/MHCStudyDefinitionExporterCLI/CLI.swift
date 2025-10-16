@@ -9,7 +9,8 @@
 import ArgumentParser
 import Foundation
 import MHCStudyDefinitionExporter
-@_spi(APISupport) import SpeziStudyDefinition
+@_spi(APISupport)
+import SpeziStudyDefinition
 
 
 @main

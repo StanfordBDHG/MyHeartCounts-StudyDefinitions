@@ -9,7 +9,8 @@
 import Foundation
 import SpeziFoundation
 import SpeziLocalization
-@_spi(APISupport) import SpeziStudyDefinition
+@_spi(APISupport)
+import SpeziStudyDefinition
 
 
 public enum Format: String, Codable, CaseIterable {
