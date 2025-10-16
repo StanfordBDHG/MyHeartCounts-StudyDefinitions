@@ -1,7 +1,8 @@
 ## Entienda su Puntuación de Salud de My Heart Counts
 
 ### ¿Qué es esta puntuación?
-Tu Puntuación de Salud de My Heart Counts proporciona una foto de tu salud cardiovascular general basada en la información que has compartido con nosotros. Esta puntuación combina varios factores que la investigación ha demostrado que son importantes para la salud cardiovascular.
+Tu Puntuación de Salud de My Heart Counts proporciona una foto de tu salud cardiovascular general basada en la información que has compartido con nosotros.
+Esta puntuación combina varios factores que la investigación ha demostrado que son importantes para la salud cardiovascular.
 
 ### ¿Cómo se calcula?
 Su puntuación incorpora:
@@ -15,5 +16,8 @@ Su puntuación incorpora:
 - Identifica áreas específicas donde pequeños cambios puedan tener mayor impacto.
 - Establece metas personales basadas en qué componentes tienen más margen de mejora.
 
-Nota importante: Esta puntuación se proporciona sólo con fines de investigación y educativos. No es un diagnóstico médico y no debe reemplazar la consulta con su médico. La Puntuación de Salud de My Heart Counts está diseñada para fomentar comportamientos de salud positivos y apoyar tu viaje hacia la salud del corazón.
+Nota importante:
+Esta puntuación se proporciona sólo con fines de investigación y educativos.
+No es un diagnóstico médico y no debe reemplazar la consulta con su médico.
+La Puntuación de Salud de My Heart Counts está diseñada para fomentar comportamientos de salud positivos y apoyar tu viaje hacia la salud del corazón.
 

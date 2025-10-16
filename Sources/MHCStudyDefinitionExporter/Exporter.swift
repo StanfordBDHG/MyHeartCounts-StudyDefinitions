@@ -54,6 +54,10 @@ public func export(to outputDir: URL, as format: Format) throws -> URL {
                 }
             }
         }
+        StudyBundle.FileResourceInput(
+            pathInBundle: "\(StudyBundle.FileReference.Category.informationalArticle.rawValue)/assets",
+            contentsOf: try tryUnwrap(Bundle.module.url(forResource: "article/assets", withExtension: nil), "Unable to find assets dir in bundle")
+        )
     }
     
     _ = try StudyBundle.writeToDisk(at: bundleUrl, definition: mhcStudyDefinition, files: inputFiles)

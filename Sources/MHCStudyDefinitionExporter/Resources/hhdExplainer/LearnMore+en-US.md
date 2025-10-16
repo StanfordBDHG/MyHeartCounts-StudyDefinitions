@@ -1,7 +1,8 @@
 ## Understanding Your My Heart Counts Health Score
 
 ### What is this score?
-Your My Heart Counts Health Score provides a snapshot of your overall cardiovascular health based on the information you've shared with us. This score combines multiple factors that research has shown to be important for cardiovascular health.
+Your My Heart Counts Health Score provides a snapshot of your overall cardiovascular health based on the information you've shared with us.
+This score combines multiple factors that research has shown to be important for cardiovascular health.
 
 ### How is it calculated?
 Your score incorporates:
@@ -15,4 +16,7 @@ Your score incorporates:
 - **Identify specific areas** where small changes might have the biggest impact.
 - **Set personal goals** based on which components have the most room for improvement. 
 
-Important note: This score is provided for research and educational purposes only. It is not a medical diagnosis and should not replace consultation with healthcare providers. The My Heart Counts Health Score is designed to encourage positive health behaviors and support your heart health journey.
+Important note:
+This score is provided for research and educational purposes only.
+It is not a medical diagnosis and should not replace consultation with healthcare providers.
+The My Heart Counts Health Score is designed to encourage positive health behaviors and support your heart health journey.
