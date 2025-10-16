@@ -14,7 +14,20 @@ import SpeziStudyDefinition
 
 
 @main
-struct Exporter: ParsableCommand {
+struct MHCStudyDefinitionExporterCLI: ParsableCommand {
+    private struct Failure: Error {}
+    
+    static var configuration: CommandConfiguration {
+        CommandConfiguration(
+            subcommands: [Export.self, Validate.self]
+        )
+    }
+}
+
+
+struct Export: ParsableCommand {
+    private struct Failure: Error {}
+    
     static var configuration: CommandConfiguration {
         CommandConfiguration(
             commandName: "export",
@@ -25,8 +38,15 @@ struct Exporter: ParsableCommand {
     @Option(help: "The desired output format")
     var format: Format = .archive
     
-    @Argument(help: "Folder into which the output file should be stored.")
+    @Argument(help: "Directory into which the output file should be stored.")
     var outputDir: String = "."
+    
+    init() {}
+    
+    init(format: Format, outputDir: URL) {
+        self.format = format
+        self.outputDir = outputDir.absoluteURL.path(percentEncoded: false)
+    }
     
     func run() throws {
         do {
@@ -37,11 +57,27 @@ struct Exporter: ParsableCommand {
             for (idx, issue) in issues.enumerated() {
                 print("\n[\(String(format: "%02li", idx + 1))] \(issue)")
             }
-            Foundation.exit(EXIT_FAILURE)
+            throw Failure()
         } catch {
-            print("Export failed: \(error)")
-            Foundation.exit(EXIT_FAILURE)
+            throw error
         }
+    }
+}
+
+
+struct Validate: ParsableCommand {
+    static var configuration: CommandConfiguration {
+        CommandConfiguration(abstract: "Validate the study definition without actually exporting it to disk.")
+    }
+    
+    func run() throws {
+        let fileManager = FileManager.default
+        let dir = URL.temporaryDirectory.appending(component: UUID().uuidString, directoryHint: .isDirectory)
+        try fileManager.createDirectory(at: dir, withIntermediateDirectories: true)
+        defer {
+            try? fileManager.removeItem(at: dir)
+        }
+        try Export(format: .archive, outputDir: dir).run()
     }
 }
 

@@ -65,14 +65,12 @@ public func export(to outputDir: URL, as format: Format) throws -> URL {
     
     switch format {
     case .package:
-        print("Wrote bundle to '\(bundleUrl.path(percentEncoded: false))'")
         return bundleUrl
     case .archive:
         // Archive into .aar file
         let archiveUrl = bundleUrl.appendingPathExtension(for: .appleArchive)
         try? fileManager.removeItem(at: archiveUrl)
         try fileManager.archiveDirectory(at: bundleUrl, to: archiveUrl)
-        print("Wrote archive to '\(archiveUrl.path(percentEncoded: false))'")
         try? fileManager.removeItem(at: bundleUrl)
         return archiveUrl
     }
