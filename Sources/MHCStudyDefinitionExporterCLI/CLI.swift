@@ -41,17 +41,23 @@ struct Export: ParsableCommand {
     @Argument(help: "Directory into which the output file should be stored.")
     var outputDir: String = "."
     
+    private var isValidation = false
+    
     init() {}
     
-    init(format: Format, outputDir: URL) {
+    fileprivate init(format: Format, outputDir: URL, isValidation: Bool) {
         self.format = format
         self.outputDir = outputDir.absoluteURL.path(percentEncoded: false)
+        self.isValidation = isValidation
     }
     
     func run() throws {
         do {
             let outputDir = URL(filePath: outputDir, relativeTo: .currentDirectory())
-            try export(to: outputDir, as: format)
+            let outputUrl = try export(to: outputDir, as: format)
+            if !isValidation {
+                print("Exported to \(outputUrl.absoluteURL.path(percentEncoded: false))")
+            }
         } catch StudyBundle.CreateBundleError.failedValidation(let issues) {
             print("Failed Validation: found \(issues.count) issue\(issues.count == 1 ? "" : "s")")
             for (idx, issue) in issues.enumerated() {
@@ -77,7 +83,8 @@ struct Validate: ParsableCommand {
         defer {
             try? fileManager.removeItem(at: dir)
         }
-        try Export(format: .archive, outputDir: dir).run()
+        try Export(format: .archive, outputDir: dir, isValidation: true).run()
+        print("Validation succeeded.")
     }
 }
 
