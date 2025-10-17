@@ -9,7 +9,12 @@
 import SpeziStudyDefinition
 
 
+extension StudyBundle.FileReference.Category {
+    /// The My Heart Counts app's Heart Health Dasboard explainer file category.
+    public static let hhdExplainer = Self(rawValue: "hhdExplainer")
+}
+
 extension StudyDefinition.CustomActiveTaskComponent.ActiveTask {
-    /// The My Heart Count app's ECG active task.
+    /// The My Heart Counts app's ECG active task.
     public static let ecg = Self(identifier: "edu.stanford.MyHeartCounts.activeTask.ecg", title: "ECG", subtitle: nil)
 }

@@ -20,10 +20,6 @@ func tryUnwrap<T>(_ value: T?, _ message: @autoclosure () -> String) throws -> T
     }
 }
 
-extension StudyBundle.FileReference.Category {
-    static let hhdExplainer = Self(rawValue: "hhdExplainer")
-}
-
 
 extension Locale.Language {
     static let english = Locale.Language(identifier: "en")
