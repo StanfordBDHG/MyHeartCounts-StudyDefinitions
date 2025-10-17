@@ -18,7 +18,6 @@ import SpeziStudyDefinition
 
 extension StudyBundle.FileReference {
     static let welcomeArticle = Self(category: .informationalArticle, filename: "Welcome", fileExtension: "md")
-    static let ecgArticle = Self(category: .informationalArticle, filename: "ECG", fileExtension: "md")
     
     static let activityFitnessSurvey = Self(category: .questionnaire, filename: "ActivityFitness", fileExtension: "json")
     static let dietScoreSurvey = Self(category: .questionnaire, filename: "Diet", fileExtension: "json")
@@ -37,7 +36,7 @@ extension StudyBundle.FileReference {
 
 
 let mhcStudyDefinition = StudyDefinition(
-    studyRevision: 20,
+    studyRevision: 21,
     metadata: .init(
         id: .mhcStudy,
         title: "My Heart Counts",
@@ -124,7 +123,6 @@ let mhcStudyDefinition = StudyDefinition(
         )),
         
         .informational(.init(id: .welcomeArticleComponent, fileRef: .welcomeArticle)),
-        .informational(.init(id: .ecgArticleComponent, fileRef: .ecgArticle)),
         
         .questionnaire(.init(id: .dietScoreSurveyComponent, fileRef: .dietScoreSurvey)),
         .questionnaire(.init(id: .nicotineExposureSurveyComponent, fileRef: .nicotineScoreSurvey)),

@@ -12,5 +12,6 @@ MyHeartCounts-StudyDefinitions Contributors
 =================================
 
 - [Lukas Kollmer](https://github.com/lukaskollmer)
+- [Anders Johnson](https://github.com/AJohn155)
 - [Paul Goldschmidt](https://github.com/PaulGoldschmidt)
 - [Paul Schmiedmayer](https://github.com/PSchmiedmayer)

@@ -8,7 +8,8 @@
 
 import Foundation
 import MHCStudyDefinitionExporter
-@_spi(APISupport) import SpeziStudyDefinition
+@_spi(APISupport)
+import SpeziStudyDefinition
 import Testing
 
 
@@ -25,7 +26,7 @@ struct MHCStudyDefinitionExporterTests {
         }
         let archiveUrl: URL
         do {
-            archiveUrl = try MHCStudyDefinitionExporter.export(to: dstDir)
+            archiveUrl = try MHCStudyDefinitionExporter.export(to: dstDir, as: .archive)
         } catch StudyBundle.CreateBundleError.failedValidation(let issues) {
             let desc = issues.enumerated().reduce(into: "Failed Validation:\n") { desc, element in
                 let (idx, issue) = element

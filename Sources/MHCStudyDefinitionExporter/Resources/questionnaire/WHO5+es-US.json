@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "en-US",
+  "language": "es-US",
   "id": "05E37E76-1308-456C-815D-90BCAA26814F",
   "title": "WHO-5",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "en-US",
-        "display": "English"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },
@@ -153,7 +153,7 @@
           ]
         },
         {
-          "linkId": "d688c285-be7a-4dc2-9602-0ae91bc46eb9",
+          "linkId": "a07c0c00-3f05-4273-f7fc-ca6a15686efe",
           "type": "choice",
           "text": "Me he sentido tranquilo y relajado",
           "required": false,
@@ -209,7 +209,7 @@
           ]
         },
         {
-          "linkId": "3ab97d45-685b-418b-8048-07395e6aa452",
+          "linkId": "76b48a80-9eb9-4a14-8a8d-a09e980d2be3",
           "type": "choice",
           "text": "Me he sentido activo y enérgico",
           "required": false,
@@ -265,7 +265,7 @@
           ]
         },
         {
-          "linkId": "414839a7-a5a9-4db1-801b-1b82465426af",
+          "linkId": "23c4edfa-fdbe-4884-8d26-173599f7dffb",
           "type": "choice",
           "required": false,
           "answerOption": [
@@ -321,7 +321,7 @@
           "text": "Me he despertado fresco y descansado"
         },
         {
-          "linkId": "a07c0c00-3f05-4273-f7fc-ca6a15686efe",
+          "linkId": "80c92e40-1223-4cd8-806c-896e0868703f",
           "type": "choice",
           "text": "Mi vida cotidiana ha estado llena de cosas que me interesan",
           "required": false,
@@ -331,7 +331,7 @@
                 "id": "5ff4e961-e8ee-4e76-92dd-a0abe1079a4a",
                 "code": "all-of-the-time",
                 "system": "urn:uuid:be70ecb9-67a8-45c9-9ba5-810a7d6dc6ff",
-                "display": "All of the Time"
+                "display": "Todo el tiempo"
               }
             },
             {
@@ -339,7 +339,7 @@
                 "id": "f036be70-9001-403c-86f0-7da8ad0e5522",
                 "code": "most-of-the-time",
                 "system": "urn:uuid:be70ecb9-67a8-45c9-9ba5-810a7d6dc6ff",
-                "display": "Most of the time"
+                "display": "La mayor parte del tiempo"
               }
             },
             {
@@ -347,7 +347,7 @@
                 "id": "9f2410ab-4681-4502-d430-f196672e46fe",
                 "code": "more-than-half-of-the-time",
                 "system": "urn:uuid:be70ecb9-67a8-45c9-9ba5-810a7d6dc6ff",
-                "display": "More than half of the time"
+                "display": "Más de la mitad del tiempo"
               }
             },
             {
@@ -355,7 +355,7 @@
                 "id": "fd3caa39-7263-4c41-87f4-b687c3908672",
                 "code": "less-than-half-of-the-time",
                 "system": "urn:uuid:be70ecb9-67a8-45c9-9ba5-810a7d6dc6ff",
-                "display": "Less than half of the time"
+                "display": "Menos de la mitad del tiempo"
               }
             },
             {
@@ -363,7 +363,7 @@
                 "id": "ad92f7dc-6084-46c8-ed64-93e85886c48e",
                 "code": "some-of-the-time",
                 "system": "urn:uuid:be70ecb9-67a8-45c9-9ba5-810a7d6dc6ff",
-                "display": "Some of the time"
+                "display": "Algunas veces"
               }
             },
             {
@@ -371,7 +371,7 @@
                 "id": "4d5e14ac-094e-4b31-b397-5e60b50a82d3",
                 "code": "at-no-time",
                 "system": "urn:uuid:be70ecb9-67a8-45c9-9ba5-810a7d6dc6ff",
-                "display": "At no time"
+                "display": "En ningún momento"
               }
             }
           ]

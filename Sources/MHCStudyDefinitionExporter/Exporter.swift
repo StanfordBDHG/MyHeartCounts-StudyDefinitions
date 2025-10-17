@@ -9,13 +9,19 @@
 import Foundation
 import SpeziFoundation
 import SpeziLocalization
-@_spi(APISupport) import SpeziStudyDefinition
+@_spi(APISupport)
+import SpeziStudyDefinition
+
+
+public enum Format: String, Codable, CaseIterable {
+    case archive
+    case package
+}
 
 
 /// Exports a `mhcStudyDefinition.spezistudybundle.aar` file to the specified `outputDir`.
 @discardableResult
-public func export(to outputDir: URL) throws -> URL {
-    print("output dir: \(outputDir.path())")
+public func export(to outputDir: URL, as format: Format) throws -> URL {
     let fileManager = FileManager.default
     guard fileManager.itemExists(at: outputDir) && fileManager.isDirectory(at: outputDir) else {
         throw NSError(domain: "edu.stanford.MHCStudyDefinitionExporter", code: 0, userInfo: [
@@ -25,7 +31,7 @@ public func export(to outputDir: URL) throws -> URL {
     let filename = "mhcStudyBundle"
     let bundleUrl = outputDir.appendingPathComponent(filename, conformingTo: .speziStudyBundle)
     
-    let inputFiles: [StudyBundle.FileInput] = try Array {
+    let inputFiles: [StudyBundle.FileResourceInput] = try Array {
         let bundleResourceUrl = try tryUnwrap(Bundle.module.resourceURL, "Unable to find Bundle /Resources URL")
         /// key: category; value: folder in which that category's files are stored.
         let categories: [StudyBundle.FileReference.Category: URL] = [
@@ -41,7 +47,7 @@ public func export(to outputDir: URL) throws -> URL {
                         unlocalizedUrl.deletingPathExtension().lastPathComponent,
                         url.pathExtension
                     )
-                    try StudyBundle.FileInput(
+                    StudyBundle.FileResourceInput(
                         fileRef: .init(category: category, filename: filename, fileExtension: fileExt),
                         localization: localizationInfo,
                         contentsOf: url
@@ -49,15 +55,23 @@ public func export(to outputDir: URL) throws -> URL {
                 }
             }
         }
+        StudyBundle.FileResourceInput(
+            pathInBundle: "\(StudyBundle.FileReference.Category.informationalArticle.rawValue)/assets",
+            contentsOf: try tryUnwrap(Bundle.module.url(forResource: "article/assets", withExtension: nil), "Unable to find assets dir in bundle")
+        )
     }
     
     _ = try StudyBundle.writeToDisk(at: bundleUrl, definition: mhcStudyDefinition, files: inputFiles)
     
-    // Archive into .aar file
-    let archiveUrl = bundleUrl.appendingPathExtension(for: .appleArchive)
-    try? fileManager.removeItem(at: archiveUrl)
-    try fileManager.archiveDirectory(at: bundleUrl, to: archiveUrl)
-    print("Wrote archive to '\(archiveUrl)'")
-    try? fileManager.removeItem(at: bundleUrl)
-    return archiveUrl
+    switch format {
+    case .package:
+        return bundleUrl
+    case .archive:
+        // Archive into .aar file
+        let archiveUrl = bundleUrl.appendingPathExtension(for: .appleArchive)
+        try? fileManager.removeItem(at: archiveUrl)
+        try fileManager.archiveDirectory(at: bundleUrl, to: archiveUrl)
+        try? fileManager.removeItem(at: bundleUrl)
+        return archiveUrl
+    }
 }

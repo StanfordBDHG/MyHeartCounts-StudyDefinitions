@@ -1,8 +1,9 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "title": "Calidad de vida en enfermedades",
   "status": "draft",
+  "id": "343982A4-907C-4E59-8E8F-9C379F9579DA",
   "meta": {
     "profile": [
       "http://spezi.health/fhir/StructureDefinition/sdf-Questionnaire"
@@ -812,7 +813,7 @@
           "valueCoding": {
             "id": "9b56f306-1e94-4417-96f4-7540f69e3a41",
             "code": "1",
-            "system": "urn:uuid:7301fa71-613 b-4a81-99cc-bd2f67c23eb4",
+            "system": "urn:uuid:7301fa71-613b-4a81-99cc-bd2f67c23eb4",
             "display": "1"
           }
         },
@@ -1231,7 +1232,7 @@
           "valueCoding": {
             "id": "b4282725-1f7c-4d92-fc96-a081ccb810a6",
             "code": "slightly-limited",
-            "system": "urn:uuid:3b3c1496-e9bd-4183-8657-a01 bea24d869",
+            "system": "urn:uuid:3b3c1496-e9bd-4183-8657-a01bea24d869",
             "display": "Ligeramente limitado/a"
           }
         },
@@ -1601,7 +1602,7 @@
         },
         {
           "valueCoding": {
-            "id": "3f2b7 ef5-3a98-46b5-d7af-1acd4f068275",
+            "id": "3f2b7ef5-3a98-46b5-d7af-1acd4f068275",
             "code": "mostly-dissatisfied",
             "system": "urn:uuid:40eef203-d60d-4ce7-8197-46771e5851fd",
             "display": "Mayormente insatisfecho/a"

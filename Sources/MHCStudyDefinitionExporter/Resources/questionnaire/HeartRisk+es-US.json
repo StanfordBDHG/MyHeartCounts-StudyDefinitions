@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "id": "09BE8C43-4501-4861-B6C9-A15F94BE6E14",
   "title": "Riesgo Cardíaco",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },
@@ -579,6 +579,14 @@
             "code": "mm[Hg]",
             "display": "millimeters of mercury"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 60
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 250
         }
       ]
     },
@@ -595,6 +603,14 @@
             "code": "mm[Hg]",
             "display": "millimeters of mercury"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 30
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 150
         }
       ]
     },
@@ -611,6 +627,14 @@
             "code": "mm[Hg]",
             "display": "millimeters of mercury"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 60
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 250
         }
       ]
     },
@@ -627,6 +651,14 @@
             "code": "mg/dL",
             "display": "milligram per deciliter"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 40
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 400
         }
       ]
     },
@@ -643,6 +675,14 @@
             "code": "%",
             "display": "percent"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 3
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 15
         }
       ]
     },
@@ -659,6 +699,14 @@
             "code": "mg/dL",
             "display": "milligram per deciliter"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 10
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 150
         }
       ]
     },
@@ -675,6 +723,14 @@
             "code": "mg/dL",
             "display": "milligram per deciliter"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 30
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 400
         }
       ]
     },
@@ -691,6 +747,14 @@
             "code": "mg/dL",
             "display": "milligram per deciliter"
           }
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/minValue",
+          "valueInteger": 80
+        },
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/maxValue",
+          "valueInteger": 600
         }
       ]
     },

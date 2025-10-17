@@ -3,6 +3,7 @@
   "language": "en-US",
   "title": "Disease QOL",
   "status": "draft",
+  "id": "343982A4-907C-4E59-8E8F-9C379F9579DA",
   "meta": {
     "profile": [
       "http://spezi.health/fhir/StructureDefinition/sdf-Questionnaire"

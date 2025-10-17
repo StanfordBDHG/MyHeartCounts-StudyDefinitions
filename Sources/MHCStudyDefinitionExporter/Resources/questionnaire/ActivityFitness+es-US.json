@@ -1,8 +1,9 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "title": "Actividad/Aptitud Física",
   "status": "draft",
+  "id": "990CA274-07E0-4EEE-ACFB-0B8FF6900695",
   "meta": {
     "profile": [
       "http://spezi.health/fhir/StructureDefinition/sdf-Questionnaire"
@@ -10,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },
@@ -294,7 +295,7 @@
               "valueCoding": {
                 "id": "27425faf-f636-4183-a099-fff107074d99",
                 "code": "1x/week",
-                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c 38",
+                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
                 "display": "1 vez por semana"
               }
             },

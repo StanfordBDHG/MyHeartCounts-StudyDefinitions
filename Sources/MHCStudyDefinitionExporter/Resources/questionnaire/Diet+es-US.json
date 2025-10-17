@@ -1,6 +1,6 @@
 {
   "resourceType": "Questionnaire",
-  "language": "es-419",
+  "language": "es-US",
   "id": "7F0E807D-2B29-4366-A19C-731FC40C5892",
   "title": "Dieta",
   "status": "draft",
@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "es-419",
-        "display": "Español (Latinoamérica)"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },
@@ -316,7 +316,7 @@
       ]
     },
     {
-      "linkId": "2cbe1f5e-be1e-47c2-8ac 5-8546ba9a57fd",
+      "linkId": "2cbe1f5e-be1e-47c2-8ac5-8546ba9a57fd",
       "type": "group",
       "text": "Sal",
       "extension": [
