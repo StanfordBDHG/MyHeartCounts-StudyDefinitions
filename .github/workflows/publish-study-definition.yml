@@ -1,0 +1,47 @@
+name: Publish Study Definition
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Swift
+      uses: swift-actions/setup-swift@v1
+      with:
+        swift-version: '5.9'
+
+    - name: Build study bundle
+      run: |
+        swift run MHCStudyDefinitionExporterCLI export .
+
+    - name: Setup Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v2
+      with:
+        project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}
+
+    - name: Upload study bundle to Firebase Storage
+      run: |
+        # Upload the study bundle file to the public/ folder in Firebase Storage
+        gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/
+
+        # Set public read access on the uploaded file
+        gsutil acl ch -u AllUsers:R gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/mhcStudyBundle.spezistudybundle.aar
+
+    - name: Verify upload
+      run: |
+        # List the files in the public directory to confirm upload
+        gsutil ls gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/
