@@ -28,8 +28,22 @@ jobs:
 
     - name: Decode and authenticate to Google Cloud
       run: |
-        # Decode base64 credentials and authenticate
+        if [ -z "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}" ]; then
+          echo "ERROR: GOOGLE_APPLICATION_CREDENTIALS_BASE64 secret is not set"
+          exit 1
+        fi
+        if [ -z "${{ secrets.FIREBASE_PROJECT_ID }}" ]; then
+          echo "ERROR: FIREBASE_PROJECT_ID secret is not set"
+          exit 1
+        fi
+
         echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}" | base64 -d > /tmp/gcp-key.json
+
+        if [ ! -s /tmp/gcp-key.json ]; then
+          echo "ERROR: Failed to decode credentials or file is empty"
+          exit 1
+        fi
+
         gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
         gcloud config set project ${{ secrets.FIREBASE_PROJECT_ID }}
 
