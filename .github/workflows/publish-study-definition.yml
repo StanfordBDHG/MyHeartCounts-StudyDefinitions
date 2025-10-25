@@ -8,23 +8,16 @@ on:
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup Swift
-      run: |
-        # Install Swift dependencies
-        sudo apt-get update
-        sudo apt-get install -y wget clang libicu-dev
-
-        # Download and install Swift 5.9
-        wget -O swift.tar.gz https://download.swift.org/swift-5.9.2-release/ubuntu2204/swift-5.9.2-RELEASE-ubuntu22.04.tar.gz
-        tar xzf swift.tar.gz
-        sudo mv swift-5.9.2-RELEASE-ubuntu22.04 /opt/swift
-        echo "/opt/swift/usr/bin" >> $GITHUB_PATH
+    - name: Setup Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
 
     - name: Build study bundle
       run: |
