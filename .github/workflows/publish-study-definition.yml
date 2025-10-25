@@ -25,13 +25,13 @@ jobs:
 
     - name: Setup Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v2
-      with:
-        project_id: ${{ secrets.FIREBASE_PROJECT_ID }}
 
-    - name: Authenticate to Google Cloud
-      uses: google-github-actions/auth@v2
-      with:
-        credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}
+    - name: Decode and authenticate to Google Cloud
+      run: |
+        # Decode base64 credentials and authenticate
+        echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}" | base64 -d > /tmp/gcp-key.json
+        gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+        gcloud config set project ${{ secrets.FIREBASE_PROJECT_ID }}
 
     - name: Upload study bundle to Firebase Storage
       run: |
