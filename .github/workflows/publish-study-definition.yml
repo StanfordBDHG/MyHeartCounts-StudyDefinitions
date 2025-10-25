@@ -21,9 +21,9 @@ jobs:
         sudo apt-get install -y wget clang libicu-dev
 
         # Download and install Swift 5.9
-        wget -O swift.tar.gz https://download.swift.org/swift-5.9.2-release/ubuntu2004/swift-5.9.2-RELEASE-ubuntu20.04.tar.gz
+        wget -O swift.tar.gz https://download.swift.org/swift-5.9.2-release/ubuntu2204/swift-5.9.2-RELEASE-ubuntu22.04.tar.gz
         tar xzf swift.tar.gz
-        sudo mv swift-5.9.2-RELEASE-ubuntu20.04 /opt/swift
+        sudo mv swift-5.9.2-RELEASE-ubuntu22.04 /opt/swift
         echo "/opt/swift/usr/bin" >> $GITHUB_PATH
 
     - name: Build study bundle
