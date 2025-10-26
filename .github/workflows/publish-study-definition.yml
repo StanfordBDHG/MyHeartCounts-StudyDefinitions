@@ -7,7 +7,19 @@ on:
     branches: [ main ]
 
 jobs:
+  vars:
+    name: Inject Environment Variables
+    runs-on: ubuntu-latest
+    environment: staging
+    outputs:
+      FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+    steps:
+      - run: |
+          echo "Injecting Environment Variables: ${{ vars.FIREBASE_PROJECT_ID }}"
+
   publish:
+    name: Build and Upload Study Bundle
+    needs: vars
     runs-on: macos-latest
     environment: staging
     
@@ -33,8 +45,8 @@ jobs:
           echo "ERROR: GOOGLE_APPLICATION_CREDENTIALS_BASE64 secret is not set"
           exit 1
         fi
-        if [ -z "${{ secrets.FIREBASE_PROJECT_ID }}" ]; then
-          echo "ERROR: FIREBASE_PROJECT_ID secret is not set"
+        if [ -z "${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}" ]; then
+          echo "ERROR: FIREBASE_PROJECT_ID variable is not set"
           exit 1
         fi
 
@@ -46,15 +58,15 @@ jobs:
         fi
 
         gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
-        gcloud config set project ${{ secrets.FIREBASE_PROJECT_ID }}
+        gcloud config set project ${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}
 
     - name: Upload study bundle to Firebase Storage
       run: |
-        gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/
+        gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.appspot.com/public/
 
-        gsutil acl ch -u AllUsers:R gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/mhcStudyBundle.spezistudybundle.aar
+        gsutil acl ch -u AllUsers:R gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.appspot.com/public/mhcStudyBundle.spezistudybundle.aar
 
     - name: Verify upload
       run: |
         # List the files in the public directory to confirm upload
-        gsutil ls gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/
+        gsutil ls gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.appspot.com/public/
