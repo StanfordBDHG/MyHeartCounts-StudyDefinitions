@@ -49,10 +49,8 @@ jobs:
 
     - name: Upload study bundle to Firebase Storage
       run: |
-        # Upload the study bundle file to the public/ folder in Firebase Storage
         gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/
-
-        # Set public read access on the uploaded file
+        
         gsutil acl ch -u AllUsers:R gs://${{ secrets.FIREBASE_PROJECT_ID }}.appspot.com/public/mhcStudyBundle.spezistudybundle.aar
 
     - name: Verify upload
