@@ -62,11 +62,11 @@ jobs:
 
     - name: Upload study bundle to Firebase Storage
       run: |
-        gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.appspot.com/public/
+        gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/
 
-        gsutil acl ch -u AllUsers:R gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.appspot.com/public/mhcStudyBundle.spezistudybundle.aar
+        gsutil acl ch -u AllUsers:R gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/mhcStudyBundle.spezistudybundle.aar
 
     - name: Verify upload
       run: |
         # List the files in the public directory to confirm upload
-        gsutil ls gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.appspot.com/public/
+        gsutil ls gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/
