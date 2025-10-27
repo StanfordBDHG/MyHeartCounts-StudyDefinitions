@@ -47,8 +47,6 @@ jobs:
       environment: ${{ steps.set-env.outputs.environment }}
       region: ${{ steps.set-region.outputs.region }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
       - name: Determine Environment
         id: set-env
         run: |
@@ -77,6 +75,8 @@ jobs:
     runs-on: macos-latest
     environment: ${{ needs.determineenvironment.outputs.environment }}
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Setup Xcode
         uses: maxim-lobanov/setup-xcode@v1
         with:
