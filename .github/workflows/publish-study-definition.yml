@@ -34,7 +34,7 @@ on:
         default: development
 
 concurrency:
-  group: deployment
+  group: production
   cancel-in-progress: false
 
 jobs:
