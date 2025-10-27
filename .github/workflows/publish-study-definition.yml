@@ -31,7 +31,7 @@ on:
           The GitHub deployment environment.
         required: false
         type: string
-        default: development
+        default: staging
 
 concurrency:
   group: production
