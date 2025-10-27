@@ -12,8 +12,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
     inputs:
       environment:
@@ -165,7 +163,17 @@ jobs:
             exit 1
           fi
 
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_US }}" | base64 -d > /tmp/gcp-key.json
+          # Debug: Check the secret format
+          echo "Checking base64 secret format..."
+          SECRET_LENGTH=$(echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_US }}" | wc -c)
+          echo "Secret length: $SECRET_LENGTH characters"
+
+          # Try to decode with better error handling
+          if ! echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_US }}" | base64 -d > /tmp/gcp-key.json 2>/dev/null; then
+            echo "ERROR: Failed to decode base64 credentials"
+            echo "This usually means the secret contains invalid base64 data"
+            exit 1
+          fi
 
           if [ ! -s /tmp/gcp-key.json ]; then
             echo "ERROR: Failed to decode credentials or file is empty"
