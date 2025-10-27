@@ -65,7 +65,7 @@ jobs:
       FIREBASE_PROJECT_ID_PRODUCTION_UK: ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_UK }}
     steps:
       - run: |
-          echo "Injecting Environment Variables In Deployment Workflow: ${{ vars.FIREBASE_PROJECT_ID }}"
+          echo "Injecting Environment Variables In Deployment Workflow: ${{ vars.FIREBASE_PROJECT_ID }} for staging/development, ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_US }} for production US, ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_UK }} for production UK"
 
   build:
     name: Build Study Bundle
