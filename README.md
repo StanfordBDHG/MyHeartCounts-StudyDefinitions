@@ -9,7 +9,7 @@ SPDX-License-Identifier: MIT
 -->
 
 # MyHeartCounts-StudyDefinitions
-
+[![Publish Study Definition](https://github.com/StanfordBDHG/MyHeartCounts-StudyDefinitions/actions/workflows/publish-study-definition.yml/badge.svg)](https://github.com/StanfordBDHG/MyHeartCounts-StudyDefinitions/actions/workflows/publish-study-definition.yml)
 [![Build and Test](https://github.com/StanfordBDHG/MyHeartCounts-StudyDefinitions/actions/workflows/verify-study-bundle.yml/badge.svg)](https://github.com/StanfordBDHG/MyHeartCounts-StudyDefinitions/actions/workflows/verify-study-bundle.yml)
 [![DOI](https://zenodo.org/badge/573230182.svg)](https://zenodo.org/badge/latestdoi/573230182)
 
