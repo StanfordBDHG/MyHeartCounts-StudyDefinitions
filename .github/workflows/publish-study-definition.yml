@@ -51,7 +51,7 @@ jobs:
         id: set-env
         run: |
           if [[ -z "${{ inputs.environment }}" ]]; then
-            echo "environment=production" >> $GITHUB_OUTPUT
+            echo "environment=staging" >> $GITHUB_OUTPUT
           else
             echo "environment=${{ inputs.environment }}" >> $GITHUB_OUTPUT
           fi
@@ -93,7 +93,7 @@ jobs:
           path: mhcStudyBundle.spezistudybundle.aar
 
   authenticate-and-publish:
-    name: Publish Study Bundle to Firebase Storage
+    name: (Development/Staging) Publish Study Bundle to Firebase Storage
     if: needs.determineenvironment.outputs.environment != 'production'
     needs: [build, determineenvironment, vars]
     runs-on: ubuntu-latest
