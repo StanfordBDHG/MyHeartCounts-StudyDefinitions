@@ -9,31 +9,69 @@
 name: Publish Study Definition
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: |
+          The GitHub deployment environment
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+  workflow_call:
+    inputs:
+      environment:
+        description: |
+          The GitHub deployment environment.
+        required: false
+        type: string
+        default: staging
 
 concurrency:
   group: production
   cancel-in-progress: false
 
 jobs:
+  determineenvironment:
+    name: Determine Environment
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-env.outputs.environment }}
+      region: ${{ steps.set-region.outputs.region }}
+    steps:
+      - name: Determine Environment
+        id: set-env
+        run: |
+          if [[ -z "${{ inputs.environment }}" ]]; then
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          else
+            echo "environment=${{ inputs.environment }}" >> $GITHUB_OUTPUT
+          fi
+
   vars:
-    name: Inject Environment Variables into Workflow
+    name: Inject Environment Variables In Deployment Workflow
     needs: determineenvironment
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ needs.determineenvironment.outputs.environment }}
     outputs:
+      FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
       FIREBASE_PROJECT_ID_PRODUCTION_US: ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_US }}
       FIREBASE_PROJECT_ID_PRODUCTION_UK: ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_UK }}
     steps:
       - run: |
-          echo "Injecting Environment Variables In Deployment Workflow:${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_US }} for production US, ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_UK }} for production UK"
+          echo "Injecting Environment Variables In Deployment Workflow: ${{ vars.FIREBASE_PROJECT_ID }} for staging/development, ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_US }} for production US, ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_UK }} for production UK"
 
   build:
     name: Build Study Bundle
     needs: [determineenvironment, vars]
     runs-on: macos-latest
-    environment: production
+    environment: ${{ needs.determineenvironment.outputs.environment }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -52,11 +90,59 @@ jobs:
           name: study-bundle
           path: mhcStudyBundle.spezistudybundle.aar
 
-  authenticate-and-publish-production:
-    name: Publish Study Bundle to Firebase Production Storage
-    needs: [build , vars]
+  authenticate-and-publish:
+    name: (Development/Staging) Publish Study Bundle to Firebase Storage
+    if: needs.determineenvironment.outputs.environment != 'production'
+    needs: [build, determineenvironment, vars]
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ needs.determineenvironment.outputs.environment }}
+    steps:
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Download study bundle artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: study-bundle
+
+      - name: Decode and authenticate to Google Cloud
+        run: |
+          if [ -z "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}" ]; then
+            echo "ERROR: GOOGLE_APPLICATION_CREDENTIALS_BASE64 secret is not set"
+            exit 1
+          fi
+          if [ -z "${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}" ]; then
+            echo "ERROR: FIREBASE_PROJECT_ID variable is not set"
+            exit 1
+          fi
+
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}" | base64 -d > /tmp/gcp-key.json
+
+          if [ ! -s /tmp/gcp-key.json ]; then
+            echo "ERROR: Failed to decode credentials or file is empty"
+            exit 1
+          fi
+
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+          gcloud config set project ${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}
+
+      - name: Upload study bundle to Firebase Storage
+        run: |
+          gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/
+
+          gsutil acl ch -u AllUsers:R gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/mhcStudyBundle.spezistudybundle.aar
+
+      - name: Verify upload
+        run: |
+          # List the files in the public directory to confirm
+          gsutil ls gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/
+
+  authenticate-and-publish-production:
+    name: (Production) Publish Study Bundle to Firebase Storage
+    if: needs.determineenvironment.outputs.environment == 'production'
+    needs: [build, determineenvironment, vars]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.determineenvironment.outputs.environment }}
     steps:
       - name: Setup Google Cloud SDK for Production
         uses: google-github-actions/setup-gcloud@v2
