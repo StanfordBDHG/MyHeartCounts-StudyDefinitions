@@ -12,10 +12,6 @@ on:
   release:
     types: [published]
 
-concurrency:
-  group: production
-  cancel-in-progress: false
-
 jobs:
   deployment:
     name: Build and Deploy to Production
