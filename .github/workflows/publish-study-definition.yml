@@ -1,0 +1,227 @@
+#
+# This source file is part of the Stanford Biodesign Digital Health MyHeart Counts open-source project
+#
+# SPDX-FileCopyrightText: 2025 Stanford University and the project authors (see CONTRIBUTORS.md)
+#
+# SPDX-License-Identifier: MIT
+#
+
+name: Publish Study Definition
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: |
+          The GitHub deployment environment
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
+  workflow_call:
+    inputs:
+      environment:
+        description: |
+          The GitHub deployment environment.
+        required: false
+        type: string
+        default: staging
+
+concurrency:
+  group: production
+  cancel-in-progress: false
+
+jobs:
+  determineenvironment:
+    name: Determine Environment
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.set-env.outputs.environment }}
+      region: ${{ steps.set-region.outputs.region }}
+    steps:
+      - name: Determine Environment
+        id: set-env
+        run: |
+          if [[ -z "${{ inputs.environment }}" ]]; then
+            echo "environment=staging" >> $GITHUB_OUTPUT
+          else
+            echo "environment=${{ inputs.environment }}" >> $GITHUB_OUTPUT
+          fi
+
+  vars:
+    name: Inject Environment Variables In Deployment Workflow
+    needs: determineenvironment
+    runs-on: ubuntu-latest
+    environment: ${{ needs.determineenvironment.outputs.environment }}
+    outputs:
+      FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+      FIREBASE_PROJECT_ID_PRODUCTION_US: ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_US }}
+      FIREBASE_PROJECT_ID_PRODUCTION_UK: ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_UK }}
+    steps:
+      - run: |
+          echo "Injecting Environment Variables In Deployment Workflow: ${{ vars.FIREBASE_PROJECT_ID }} for staging/development, ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_US }} for production US, ${{ vars.FIREBASE_PROJECT_ID_PRODUCTION_UK }} for production UK"
+
+  build:
+    name: Build Study Bundle
+    needs: [determineenvironment, vars]
+    runs-on: macos-latest
+    environment: ${{ needs.determineenvironment.outputs.environment }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Build study bundle
+        run: |
+          swift run MHCStudyDefinitionExporterCLI export .
+
+      - name: Upload study bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: study-bundle
+          path: mhcStudyBundle.spezistudybundle.aar
+
+  authenticate-and-publish:
+    name: (Development/Staging) Publish Study Bundle to Firebase Storage
+    if: needs.determineenvironment.outputs.environment != 'production'
+    needs: [build, determineenvironment, vars]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.determineenvironment.outputs.environment }}
+    steps:
+      - name: Setup Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Download study bundle artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: study-bundle
+
+      - name: Decode and authenticate to Google Cloud
+        run: |
+          if [ -z "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}" ]; then
+            echo "ERROR: GOOGLE_APPLICATION_CREDENTIALS_BASE64 secret is not set"
+            exit 1
+          fi
+          if [ -z "${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}" ]; then
+            echo "ERROR: FIREBASE_PROJECT_ID variable is not set"
+            exit 1
+          fi
+
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}" | base64 -d > /tmp/gcp-key.json
+
+          if [ ! -s /tmp/gcp-key.json ]; then
+            echo "ERROR: Failed to decode credentials or file is empty"
+            exit 1
+          fi
+
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+          gcloud config set project ${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}
+
+      - name: Upload study bundle to Firebase Storage
+        run: |
+          gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/
+
+          gsutil acl ch -u AllUsers:R gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/mhcStudyBundle.spezistudybundle.aar
+
+      - name: Verify upload
+        run: |
+          # List the files in the public directory to confirm
+          gsutil ls gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID }}.firebasestorage.app/public/
+
+  authenticate-and-publish-production:
+    name: (Production) Publish Study Bundle to Firebase Storage
+    if: needs.determineenvironment.outputs.environment == 'production'
+    needs: [build, determineenvironment, vars]
+    runs-on: ubuntu-latest
+    environment: ${{ needs.determineenvironment.outputs.environment }}
+    steps:
+      - name: Setup Google Cloud SDK for Production
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Download study bundle artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: study-bundle
+
+      - name: (US production) Decode and authenticate to Google Cloud
+        run: |
+          if [ -z "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_US }}" ]; then
+            echo "ERROR: GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_US secret is not set"
+            exit 1
+          fi
+          if [ -z "${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_US }}" ]; then
+            echo "ERROR: FIREBASE_PROJECT_ID_PRODUCTION_US variable is not set"
+            exit 1
+          fi
+
+          # Debug: Check the secret format
+          echo "Checking base64 secret format..."
+          SECRET_LENGTH=$(echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_US }}" | wc -c)
+          echo "Secret length: $SECRET_LENGTH characters"
+
+          # Try to decode with better error handling
+          if ! echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_US }}" | base64 -d > /tmp/gcp-key.json 2>/dev/null; then
+            echo "ERROR: Failed to decode base64 credentials"
+            echo "This usually means the secret contains invalid base64 data"
+            exit 1
+          fi
+
+          if [ ! -s /tmp/gcp-key.json ]; then
+            echo "ERROR: Failed to decode credentials or file is empty"
+            exit 1
+          fi
+
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+          gcloud config set project ${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_US }}
+
+      - name: (US production) Upload study bundle to Firebase Storage
+        run: |
+          gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_US }}.firebasestorage.app/public/
+
+          gsutil acl ch -u AllUsers:R gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_US }}.firebasestorage.app/public/mhcStudyBundle.spezistudybundle.aar
+
+      - name: (US production) Verify upload
+        run: |
+          # List the files in the public directory to confirm
+          gsutil ls gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_US }}.firebasestorage.app/public/
+
+      - name: (UK production) Decode and authenticate to Google Cloud
+        run: |
+          if [ -z "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_UK }}" ]; then
+            echo "ERROR: GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_UK secret is not set"
+            exit 1
+          fi
+          if [ -z "${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_UK }}" ]; then
+            echo "ERROR: FIREBASE_PROJECT_ID_PRODUCTION_UK variable is not set"
+            exit 1
+          fi
+
+          echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64_PRODUCTION_UK }}" | base64 -d > /tmp/gcp-key.json
+
+          if [ ! -s /tmp/gcp-key.json ]; then
+            echo "ERROR: Failed to decode credentials or file is empty"
+            exit 1
+          fi
+
+          gcloud auth activate-service-account --key-file=/tmp/gcp-key.json
+          gcloud config set project ${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_UK }}
+
+      - name: (UK production) Upload study bundle to Firebase Storage
+        run: |
+          gsutil cp mhcStudyBundle.spezistudybundle.aar gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_UK }}.firebasestorage.app/public/
+
+          gsutil acl ch -u AllUsers:R gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_UK }}.firebasestorage.app/public/mhcStudyBundle.spezistudybundle.aar
+
+      - name: (UK production) Verify upload
+        run: |
+          # List the files in the public directory to confirm
+          gsutil ls gs://${{ needs.vars.outputs.FIREBASE_PROJECT_ID_PRODUCTION_UK }}.firebasestorage.app/public/
