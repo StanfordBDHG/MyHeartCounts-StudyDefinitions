@@ -34,7 +34,7 @@ on:
         default: staging
 
 concurrency:
-  group: production
+  group: ${{ inputs.environment || 'staging' }}
   cancel-in-progress: false
 
 jobs:
