@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Your activity levels, exercise habits, and sleep",
   "item": [
     {
       "linkId": "7dce4af9-fee1-4abf-a68f-b226b35c13e1",

@@ -1,0 +1,19 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Capture ECG on your apple watch" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Captura un ECG con tu Apple Watch"
+          }
+        }
+      }
+    },
+    "ECG" : {
+
+    }
+  },
+  "version" : "1.1"
+}

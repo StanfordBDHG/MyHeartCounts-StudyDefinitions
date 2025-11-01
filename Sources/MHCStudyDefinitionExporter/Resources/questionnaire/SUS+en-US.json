@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Quick usability check",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/sus",
   "item": [
     {

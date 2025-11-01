@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Workday vs. weekend sleep pattern snapshot",
   "item": [
     {
       "linkId": "90cb3e9c-71f6-4a48-8fca-47776be52a99",

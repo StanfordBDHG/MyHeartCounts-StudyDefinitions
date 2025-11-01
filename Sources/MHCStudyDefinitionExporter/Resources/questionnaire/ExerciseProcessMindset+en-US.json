@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Measures mindsets about the health journey's process",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/exerciseProcess",
   "item": [
     {

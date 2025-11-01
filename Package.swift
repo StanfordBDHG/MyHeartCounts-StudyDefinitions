@@ -13,6 +13,7 @@ import PackageDescription
 
 let package = Package(
     name: "MHCStudyDefinition",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v18),
         .watchOS(.v11),
@@ -35,7 +36,8 @@ let package = Package(
             name: "MHCStudyDefinition",
             dependencies: [
                 .product(name: "SpeziStudyDefinition", package: "SpeziStudy")
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
         .target(
             name: "MHCStudyDefinitionExporter",

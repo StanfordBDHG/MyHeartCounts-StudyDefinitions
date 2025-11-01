@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Your green-light check: fitness readiness and possible caution points",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/parQplus",
   "item": [
     {
