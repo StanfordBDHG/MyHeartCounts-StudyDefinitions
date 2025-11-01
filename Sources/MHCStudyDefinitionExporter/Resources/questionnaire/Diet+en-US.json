@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "A general diet assessment",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/dietScore",
   "item": [
     {

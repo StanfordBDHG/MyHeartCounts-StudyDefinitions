@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Simple well-being check for the past two weeks",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/who5",
   "item": [
     {

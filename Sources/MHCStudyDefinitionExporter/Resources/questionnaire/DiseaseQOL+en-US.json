@@ -1,9 +1,9 @@
 {
   "resourceType": "Questionnaire",
   "language": "en-US",
+  "id": "343982A4-907C-4E59-8E8F-9C379F9579DA",
   "title": "Disease QOL",
   "status": "draft",
-  "id": "343982A4-907C-4E59-8E8F-9C379F9579DA",
   "meta": {
     "profile": [
       "http://spezi.health/fhir/StructureDefinition/sdf-Questionnaire"
@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Life with cardiovascular disease: symptoms, daily function, overall well-being",
   "item": [
     {
       "linkId": "5c428e4c-6390-4102-bc9c-9d2bb2ef51d4",

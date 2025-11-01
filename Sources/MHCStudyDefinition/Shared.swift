@@ -16,5 +16,9 @@ extension StudyBundle.FileReference.Category {
 
 extension StudyDefinition.CustomActiveTaskComponent.ActiveTask {
     /// The My Heart Counts app's ECG active task.
-    public static let ecg = Self(identifier: "edu.stanford.MyHeartCounts.activeTask.ecg", title: "ECG", subtitle: nil)
+    public static let ecg = Self(
+        identifier: "edu.stanford.MyHeartCounts.activeTask.ecg",
+        title: "ECG",
+        subtitle: "Capture ECG on your apple watch"
+    )
 }

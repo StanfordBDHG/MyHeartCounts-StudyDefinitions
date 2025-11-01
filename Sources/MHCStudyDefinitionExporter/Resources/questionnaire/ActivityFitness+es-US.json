@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Sus niveles de actividad, hábitos de ejercicio y sueño",
   "item": [
     {
       "linkId": "7dce4af9-fee1-4abf-a68f-b226b35c13e1",

@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Anxiety screening",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/gad7",
   "item": [
     {

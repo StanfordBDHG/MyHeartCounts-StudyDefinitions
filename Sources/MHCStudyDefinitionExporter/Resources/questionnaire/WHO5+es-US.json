@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Breve evaluación de bienestar de las últimas dos semanas",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/who5",
   "item": [
     {

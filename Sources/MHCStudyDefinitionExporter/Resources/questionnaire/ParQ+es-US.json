@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Su verificación de luz verde: preparación para la actividad física y posibles puntos de precaución",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/parQplus",
   "item": [
     {

@@ -36,6 +36,7 @@
   "subjectType": [
     "Patient"
   ],
+  "purpose": "Un vistazo rápido a su historial de salud y biomarcadores",
   "url": "https://myheartcounts.stanford.edu/fhir/survey/heartRisk",
   "item": [
     {
