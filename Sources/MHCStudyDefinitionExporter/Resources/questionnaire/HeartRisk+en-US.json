@@ -503,14 +503,6 @@
         },
         {
           "valueCoding": {
-            "id": "df59bf73-a777-47fa-9958-225e3bf2f280",
-            "code": "severe-mental-illness-(this-includes-schizophrenia,-bipolar-disorder-and-moderate/severe-depression)",
-            "system": "urn:uuid:d89c2847-960b-43df-86fe-42c094c8d271",
-            "display": "Severe mental illness (this includes schizophrenia, bipolar disorder and moderate/severe depression)"
-          }
-        },
-        {
-          "valueCoding": {
             "id": "cd67d50f-5dad-472d-8604-1247a4480a4d",
             "code": "none-of-the-above",
             "system": "urn:uuid:d89c2847-960b-43df-86fe-42c094c8d271",
