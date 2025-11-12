@@ -137,6 +137,7 @@ let mhcStudyDefinition = StudyDefinition(
         .questionnaire(.init(id: .nicotineExposureSurveyComponent, fileRef: .nicotineScoreSurvey)),
         .questionnaire(.init(id: .exerciseAdequacySurveyComponent, fileRef: .exerciseAdequacySurvey)),
         .questionnaire(.init(id: .exerciseMindsetSurveyComponent, fileRef: .exerciseMindsetSurvey)),
+        .questionnaire(.init(id: .activityFitnessSurveyComponent, fileRef: .activityFitnessSurvey)),
         .questionnaire(.init(id: .gad7Component, fileRef: .gad7)),
         .questionnaire(.init(id: .infoSurveyComponent, fileRef: .infoSurvey)),
         .questionnaire(.init(id: .susSurveyComponent, fileRef: .susSurvey)),
@@ -145,6 +146,7 @@ let mhcStudyDefinition = StudyDefinition(
         .questionnaire(.init(id: .parQPlusSurveyComponent, fileRef: .parQPlusSurvey)),
         .customActiveTask(.init(id: .ecgComponent, activeTask: .ecg)),
         .questionnaire(.init(id: .chronotypeSurveyComponent, fileRef: .chronotypeSurvey)),
+        .questionnaire(.init(id: .diseaseQoLSurveyComponent, fileRef: .dieseasQoLSurvey)),
         
         .timedWalkingTest(.init(
             id: .sixMinWalkTestComponent,
@@ -187,12 +189,11 @@ let mhcStudyDefinition = StudyDefinition(
         )
         
         // DAY 2
-        
         StudyDefinition.ComponentSchedule(
             id: .activityFitnessSurveySchedule,
             componentId: .activityFitnessSurveyComponent,
             scheduleDefinition: .repeated(.monthly(interval: 6, day: nil, hour: 9, minute: 0), offset: .init(day: 1)),
-            completionPolicy: .afterStart,
+            completionPolicy: .anytime,
             notifications: .enabled(thread: .task)
         )
         StudyDefinition.ComponentSchedule(
@@ -236,7 +237,7 @@ let mhcStudyDefinition = StudyDefinition(
             id: .diseaseQoLSurveySchedule,
             componentId: .diseaseQoLSurveyComponent,
             scheduleDefinition: .repeated(.monthly(interval: 1, day: nil, hour: 6, minute: 0), offset: .init(day: 2)),
-            completionPolicy: .afterStart,
+            completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
         
