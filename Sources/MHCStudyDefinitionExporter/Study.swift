@@ -36,7 +36,7 @@ extension StudyBundle.FileReference {
 
 
 let mhcStudyDefinition = StudyDefinition(
-    studyRevision: 27,
+    studyRevision: 28,
     metadata: .init(
         id: .mhcStudy,
         title: "My Heart Counts",
@@ -239,7 +239,7 @@ let mhcStudyDefinition = StudyDefinition(
         StudyDefinition.ComponentSchedule(
             id: .diseaseQoLSurveySchedule,
             componentId: .diseaseQoLSurveyComponent,
-            scheduleDefinition: .repeated(.monthly(interval: 1, day: nil, hour: 6, minute: 0), offset: .init(day: 2)),
+            scheduleDefinition: .repeated(.weekly(interval: 2, weekday: nil, hour: 6, minute: 0), offset: .init(day: 2)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
