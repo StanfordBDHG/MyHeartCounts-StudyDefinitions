@@ -36,7 +36,7 @@ extension StudyBundle.FileReference {
 
 
 let mhcStudyDefinition = StudyDefinition(
-    studyRevision: 28,
+    studyRevision: 30,
     metadata: .init(
         id: .mhcStudy,
         title: "My Heart Counts",
@@ -172,21 +172,21 @@ let mhcStudyDefinition = StudyDefinition(
         StudyDefinition.ComponentSchedule(
             id: .parQPlusSurveySchedule,
             componentId: .parQPlusSurveyComponent,
-            scheduleDefinition: .once(.event(.activation)),
+            scheduleDefinition: .once(.event(.activation, time: .init(hour: 9, second: 1))),
             completionPolicy: .anytime,
             notifications: .disabled
         )
         StudyDefinition.ComponentSchedule(
             id: .heartRiskSurveySchedule,
             componentId: .heartRiskSurveyComponent,
-            scheduleDefinition: .once(.event(.activation)),
+            scheduleDefinition: .once(.event(.activation, time: .init(hour: 9, second: 2))),
             completionPolicy: .anytime,
             notifications: .disabled
         )
         StudyDefinition.ComponentSchedule(
             id: .dietScoreSurveySchedule,
             componentId: .dietScoreSurveyComponent,
-            scheduleDefinition: .repeated(.monthly(interval: 3, day: nil, hour: 6, minute: 0)),
+            scheduleDefinition: .repeated(.monthly(interval: 3, day: nil, hour: 9, minute: 0, second: 3)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
@@ -269,7 +269,7 @@ let mhcStudyDefinition = StudyDefinition(
         
         // DAY 5
         StudyDefinition.ComponentSchedule(
-            id: .sixMinWalkTestSchedule,
+            id: .sixMinWalkTestScheduleInitial,
             componentId: .sixMinWalkTestComponent,
             scheduleDefinition: .once(.event(.activation, offsetInDays: 4, time: .init(hour: 6))),
             completionPolicy: .anytime,
@@ -277,10 +277,11 @@ let mhcStudyDefinition = StudyDefinition(
         )
         
         StudyDefinition.ComponentSchedule(
-            id: .sixMinWalkTestSchedule,
+            id: .sixMinWalkTestScheduleRepeat,
             componentId: .sixMinWalkTestComponent,
             // Q: could this (with a 4-day offset) subsume the schedule directly above?)
-            scheduleDefinition: .repeated(.monthly(interval: 1, day: nil, hour: 6, minute: 0)),
+//            scheduleDefinition: .repeated(.monthly(interval: 1, day: nil, hour: 6, minute: 0)),
+            scheduleDefinition: .once(.event(.completedTask(componentId: .sixMinWalkTestComponent), offsetInDays: 14, time: .init(hour: 6))),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
