@@ -279,8 +279,6 @@ let mhcStudyDefinition = StudyDefinition(
         StudyDefinition.ComponentSchedule(
             id: .sixMinWalkTestScheduleRepeat,
             componentId: .sixMinWalkTestComponent,
-            // Q: could this (with a 4-day offset) subsume the schedule directly above?)
-//            scheduleDefinition: .repeated(.monthly(interval: 1, day: nil, hour: 6, minute: 0)),
             scheduleDefinition: .once(.event(.completedTask(componentId: .sixMinWalkTestComponent), offsetInDays: 14, time: .init(hour: 6))),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
