@@ -19,6 +19,6 @@ extension StudyDefinition.CustomActiveTaskComponent.ActiveTask {
     public static let ecg = Self(
         identifier: "edu.stanford.MyHeartCounts.activeTask.ecg",
         title: "ECG",
-        subtitle: "Capture ECG on your apple watch"
+        subtitle: "Record an ECG using your Apple Watch"
     )
 }

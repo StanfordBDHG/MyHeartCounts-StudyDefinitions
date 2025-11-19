@@ -16,7 +16,8 @@ extension UUID {
     static let mhcStudyComponentHealthDataCollection = UUID(uuidString: "BA29517B-92BB-483E-908E-7E5046C05A6C")!
     
     static let sixMinWalkTestComponent = UUID(uuidString: "DC5E1FE3-AF1E-4DC0-9BF1-558FFCDA174A")!
-    static let sixMinWalkTestSchedule = UUID(uuidString: "C7C0DE58-17D0-4041-B250-BECF6F95C755")!
+    static let sixMinWalkTestScheduleInitial = UUID(uuidString: "C7C0DE58-17D0-4041-B250-BECF6F95C755")!
+    static let sixMinWalkTestScheduleRepeat = UUID(uuidString: "CB3E10FA-0E46-4E7A-8BF8-1B80F6A3935C")!
     
     static let twelveMinRunTestComponent = UUID(uuidString: "51F7F266-2712-446F-9DC8-2F19999B59D3")!
     static let twelveMinRunTestSchedule = UUID(uuidString: "CE4BD87E-ACD4-4D22-B263-469AB3B32E37")!
