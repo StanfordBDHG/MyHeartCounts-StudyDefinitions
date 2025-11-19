@@ -541,25 +541,6 @@
       ]
     },
     {
-      "linkId": "1b1755d6-0a95-4dbb-cac9-dc4c2656c1f1",
-      "type": "date",
-      "text": "Por favor, agregue la fecha de diagnóstico de su condición primaria seleccionada.",
-      "extension": [
-        {
-          "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
-          "valueCodeableConcept": {
-            "coding": [
-              {
-                "system": "http://hl7.org/fhir/ValueSet/questionnaire-item-control",
-                "code": "yearMonth"
-              }
-            ]
-          }
-        }
-      ],
-      "required": false
-    },
-    {
       "linkId": "7cec349c-495c-4ef6-834e-cc9708625736",
       "type": "quantity",
       "text": "¿Cuál es su presión arterial sistólica más reciente? (mmHg, la presión arterial se muestra típicamente como sistólica/diastólica)",
