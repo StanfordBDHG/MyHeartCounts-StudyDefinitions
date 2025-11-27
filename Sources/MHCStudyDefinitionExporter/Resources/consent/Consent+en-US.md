@@ -203,9 +203,10 @@ As a research participant you have the following rights.  These rights include b
 <select id=short-term-physical-activity-trial expected-value="*">
 Would you like to join the short term physical activity promoting trial?
 
-If you select yes, you will go straight from the baseline monitoring week into the randomized crossover trial.
-
-If you select no, you will still be able to use the base My Heart Counts application.
+<footnote>
+If you select **yes**, you will go straight from the baseline monitoring week into the randomized crossover trial.
+If you select **no**, you will still be able to use the base My Heart Counts application.
+</footnote>
 <option id=short-term-physical-activity-trial-yes>Yes</option>
 <option id=short-term-physical-activity-trial-no>No</option>
 </select>

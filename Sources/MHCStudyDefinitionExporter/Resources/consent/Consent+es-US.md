@@ -204,9 +204,10 @@ Como participante de una investigación, usted tiene los siguientes derechos. Es
 <select id=short-term-physical-activity-trial expected-value="*">
 ¿Le gustaría unirse al ensayo de promoción de la actividad física a corto plazo?
 
-Si selecciona sí, pasará directamente desde la semana de monitoreo de evaluación basal al ensayo cruzado aleatorizado.
-
-Si selecciona no, aún podrá utilizar la aplicación base de My Heart Counts.
+<footnote>
+Si selecciona **sí**, pasará directamente desde la semana de monitoreo de evaluación basal al ensayo cruzado aleatorizado.
+Si selecciona **no**, aún podrá utilizar la aplicación base de My Heart Counts.
+</footnote>
 <option id=short-term-physical-activity-trial-yes>Sí</option>
 <option id=short-term-physical-activity-trial-no>No</option>
 </select>
