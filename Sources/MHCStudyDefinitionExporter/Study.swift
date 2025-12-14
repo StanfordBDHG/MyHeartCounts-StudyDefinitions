@@ -119,7 +119,6 @@ let mhcStudyDefinition = StudyDefinition(
                     SampleType.electrocardiogram,
                     SampleType.stateOfMind,
                     SampleType.gad7,
-                    SampleType.phq9,
                     SampleType.allergyRecord,
                     SampleType.clinicalNoteRecord,
                     SampleType.conditionRecord,
