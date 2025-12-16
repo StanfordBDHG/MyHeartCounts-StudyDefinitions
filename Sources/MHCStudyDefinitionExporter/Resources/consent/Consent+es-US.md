@@ -202,7 +202,7 @@ Como participante de una investigación, usted tiene los siguientes derechos. Es
 
 
 <toggle id=future-studies initial-value=true>
-May we contact you about future studies that may be of interest to you?
+¿Podemos comunicarnos con usted en el futuro para informarle sobre otros estudios que puedan ser de su interés?
 </>
 
 
