@@ -100,7 +100,22 @@ let mhcStudyDefinition = StudyDefinition(
                     .bodyMassIndex,
                     .leanBodyMass,
                     .bodyFatPercentage,
-                    .waistCircumference
+                    .waistCircumference,
+                    
+                    .menstrualFlow,
+                    .intermenstrualBleeding,
+                    .infrequentMenstrualCycles,
+                    .irregularMenstrualCycles,
+                    .persistentIntermenstrualBleeding,
+                    .prolongedMenstrualPeriods,
+                    .basalBodyTemperature,
+                    .cervicalMucusQuality,
+                    .ovulationTestResult,
+                    .progesteroneTestResult,
+                    .contraceptive,
+                    .pregnancy,
+                    .pregnancyTestResult,
+                    .lactation
                 ],
                 correlation: [
                     .bloodPressure
