@@ -77,6 +77,7 @@ let mhcStudyDefinition = StudyDefinition(
                     .walkingSpeed,
                     .stairAscentSpeed,
                     .stairDescentSpeed,
+                    .numberOfTimesFallen,
                     
                     .heartRate,
                     .restingHeartRate,
