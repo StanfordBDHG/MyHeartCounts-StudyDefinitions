@@ -101,22 +101,7 @@ let mhcStudyDefinition = StudyDefinition(
                     .bodyMassIndex,
                     .leanBodyMass,
                     .bodyFatPercentage,
-                    .waistCircumference,
-                    
-                    .menstrualFlow,
-                    .intermenstrualBleeding,
-                    .infrequentMenstrualCycles,
-                    .irregularMenstrualCycles,
-                    .persistentIntermenstrualBleeding,
-                    .prolongedMenstrualPeriods,
-                    .basalBodyTemperature,
-                    .cervicalMucusQuality,
-                    .ovulationTestResult,
-                    .progesteroneTestResult,
-                    .contraceptive,
-                    .pregnancy,
-                    .pregnancyTestResult,
-                    .lactation
+                    .waistCircumference
                 ],
                 correlation: [
                     .bloodPressure
@@ -128,7 +113,21 @@ let mhcStudyDefinition = StudyDefinition(
                     .lowHeartRateEvent,
                     .highHeartRateEvent,
                     .irregularHeartRhythmEvent,
-                    .mindfulSession
+                    .mindfulSession,
+                    
+                    .menstrualFlow,
+                    .intermenstrualBleeding,
+                    .infrequentMenstrualCycles,
+                    .irregularMenstrualCycles,
+                    .persistentIntermenstrualBleeding,
+                    .prolongedMenstrualPeriods,
+                    .cervicalMucusQuality,
+                    .ovulationTestResult,
+                    .progesteroneTestResult,
+                    .contraceptive,
+                    .pregnancy,
+                    .pregnancyTestResult,
+                    .lactation
                 ],
                 other: [
                     SampleType.workout,
