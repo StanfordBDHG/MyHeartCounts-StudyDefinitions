@@ -36,7 +36,7 @@ extension StudyBundle.FileReference {
 
 
 let mhcStudyDefinition = StudyDefinition(
-    studyRevision: 32,
+    studyRevision: 33,
     metadata: .init(
         id: .mhcStudy,
         title: "My Heart Counts",
@@ -77,6 +77,7 @@ let mhcStudyDefinition = StudyDefinition(
                     .walkingSpeed,
                     .stairAscentSpeed,
                     .stairDescentSpeed,
+                    .numberOfTimesFallen,
                     
                     .heartRate,
                     .restingHeartRate,
@@ -112,7 +113,21 @@ let mhcStudyDefinition = StudyDefinition(
                     .lowHeartRateEvent,
                     .highHeartRateEvent,
                     .irregularHeartRhythmEvent,
-                    .mindfulSession
+                    .mindfulSession,
+                    
+                    .menstrualFlow,
+                    .intermenstrualBleeding,
+                    .infrequentMenstrualCycles,
+                    .irregularMenstrualCycles,
+                    .persistentIntermenstrualBleeding,
+                    .prolongedMenstrualPeriods,
+                    .cervicalMucusQuality,
+                    .ovulationTestResult,
+                    .progesteroneTestResult,
+                    .contraceptive,
+                    .pregnancy,
+                    .pregnancyTestResult,
+                    .lactation
                 ],
                 other: [
                     SampleType.workout,

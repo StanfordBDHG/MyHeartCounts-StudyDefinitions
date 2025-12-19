@@ -201,6 +201,11 @@ Como participante de una investigación, usted tiene los siguientes derechos. Es
 - tener la oportunidad de decidir si dar o no dar su consentimiento para participar en un experimento médico sin la intervención de ningún elemento de fuerza, fraude, engaño, coacción o influencia indebida en la decisión del sujeto.
 
 
+<toggle id=future-studies initial-value=true>
+¿Podemos comunicarnos con usted en el futuro para informarle sobre otros estudios que puedan ser de su interés?
+</>
+
+
 <select id=short-term-physical-activity-trial expected-value="*">
 ¿Le gustaría unirse al ensayo de promoción de la actividad física a corto plazo?
 

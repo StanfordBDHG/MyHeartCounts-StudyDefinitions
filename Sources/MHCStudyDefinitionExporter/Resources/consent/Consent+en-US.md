@@ -200,6 +200,11 @@ As a research participant you have the following rights.  These rights include b
 - be given the opportunity to decide to consent or not to consent to a medical experiment without the intervention of any element of force, fraud, deceit, duress, coercion or undue influence on the subject's decision.
 
 
+<toggle id=future-studies initial-value=true>
+May we contact you about future studies that may be of interest to you?
+</>
+
+
 <select id=short-term-physical-activity-trial expected-value="*">
 Would you like to join the short term physical activity promoting trial?
 
