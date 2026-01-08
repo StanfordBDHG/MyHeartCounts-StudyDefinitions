@@ -32,11 +32,12 @@ extension StudyBundle.FileReference {
     static let susSurvey = Self(category: .questionnaire, filename: "SUS", fileExtension: "json")
     static let who5Survey = Self(category: .questionnaire, filename: "WHO5", fileExtension: "json")
     static let chronotypeSurvey = Self(category: .questionnaire, filename: "Chronotype", fileExtension: "json")
+    static let fatigueSurvey = Self(category: .questionnaire, filename: "Fatigue", fileExtension: "json")
 }
 
 
 let mhcStudyDefinition = StudyDefinition(
-    studyRevision: 33,
+    studyRevision: 34,
     metadata: .init(
         id: .mhcStudy,
         title: "My Heart Counts",
@@ -164,6 +165,7 @@ let mhcStudyDefinition = StudyDefinition(
         .customActiveTask(.init(id: .ecgComponent, activeTask: .ecg)),
         .questionnaire(.init(id: .chronotypeSurveyComponent, fileRef: .chronotypeSurvey)),
         .questionnaire(.init(id: .diseaseQoLSurveyComponent, fileRef: .dieseasQoLSurvey)),
+        .questionnaire(.init(id: .fatigueSurveyComponent, fileRef: .fatigueSurvey)),
         
         .timedWalkingTest(.init(
             id: .sixMinWalkTestComponent,
@@ -294,6 +296,15 @@ let mhcStudyDefinition = StudyDefinition(
             id: .sixMinWalkTestScheduleRepeat,
             componentId: .sixMinWalkTestComponent,
             scheduleDefinition: .once(.event(.completedTask(componentId: .sixMinWalkTestComponent), offsetInDays: 14, time: .init(hour: 6))),
+            completionPolicy: .anytime,
+            notifications: .enabled(thread: .task, time: .init(hour: 9))
+        )
+        
+        // DAY 9
+        StudyDefinition.ComponentSchedule(
+            id: .fatigueSurveySchedule,
+            componentId: .fatigueSurveyComponent,
+            scheduleDefinition: .repeated(.weekly(interval: 2, weekday: nil, hour: 6, minute: 0, second: 0), offset: .init(day: 8)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
