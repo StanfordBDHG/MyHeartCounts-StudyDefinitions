@@ -1,9 +1,9 @@
 {
   "resourceType": "Questionnaire",
   "language": "es-US",
+  "id": "990CA274-07E0-4EEE-ACFB-0B8FF6900695",
   "title": "Actividad/Aptitud Física",
   "status": "draft",
-  "id": "990CA274-07E0-4EEE-ACFB-0B8FF6900695",
   "meta": {
     "profile": [
       "http://spezi.health/fhir/StructureDefinition/sdf-Questionnaire"
@@ -834,18 +834,6 @@
           }
         }
       ]
-    },
-    {
-      "linkId": "3a72c7f6-397b-43fd-8d5e-c632dfcd83ad",
-      "type": "time",
-      "text": "¿A qué hora se va a dormir típicamente?",
-      "required": false
-    },
-    {
-      "linkId": "cbddeed7-1a2a-425e-df32-609d7f10fe30",
-      "type": "time",
-      "text": "¿A qué hora se despierta típicamente?",
-      "required": false
     },
     {
       "linkId": "397324dd-5e01-43c6-863b-206a3b6fed9a",
