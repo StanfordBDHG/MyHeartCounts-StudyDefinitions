@@ -238,6 +238,14 @@
           "answerOption": [
             {
               "valueCoding": {
+                "id": "e759d5b6-d1d2-4193-c9b7-64b58ecdf5e1",
+                "code": "never",
+                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
+                "display": "Never"
+              }
+            },
+            {
+              "valueCoding": {
                 "id": "5fdbb9ee-604e-4388-9940-45df5dd989a0",
                 "code": "less-than-1x/week",
                 "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
@@ -284,6 +292,14 @@
           "text": "How often do you lift weights?",
           "required": false,
           "answerOption": [
+            {
+              "valueCoding": {
+                "id": "fa334ff8-d5f8-41f1-8bd8-89bd3797b164",
+                "code": "never",
+                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
+                "display": "Never"
+              }
+            },
             {
               "valueCoding": {
                 "id": "5fdbb9ee-604e-4388-9940-45df5dd989a0",
@@ -386,6 +402,14 @@
           "text": "How often do you take group exercise classes? ",
           "required": false,
           "answerOption": [
+            {
+              "valueCoding": {
+                "id": "6e56dafd-1114-4930-afac-c9a29a4ebf8f",
+                "code": "never",
+                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
+                "display": "Never"
+              }
+            },
             {
               "valueCoding": {
                 "id": "5fdbb9ee-604e-4388-9940-45df5dd989a0",
