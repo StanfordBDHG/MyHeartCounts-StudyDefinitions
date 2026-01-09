@@ -11,8 +11,8 @@
     "tag": [
       {
         "system": "urn:ietf:bcp:47",
-        "code": "en-US",
-        "display": "English"
+        "code": "es-US",
+        "display": "Spanish"
       }
     ]
   },
@@ -27,7 +27,7 @@
         "coding": [
           {
             "system": "urn:oid:2.16.578.1.12.4.1.1.8655",
-            "display": "Actividad/Fitness"
+            "display": "Actividad/Aptitud Fisica"
           }
         ]
       }
