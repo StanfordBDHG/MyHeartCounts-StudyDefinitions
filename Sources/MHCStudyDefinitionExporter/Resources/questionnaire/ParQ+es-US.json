@@ -21,7 +21,7 @@
       "code": {
         "system": "http://hl7.org/fhir/ValueSet/usage-context-type",
         "code": "focus",
-        "display": "Clinical Focus"
+       "display": "Enfoque Clínico"
       },
       "valueCodeableConcept": {
         "coding": [
