@@ -1,9 +1,9 @@
 {
   "resourceType": "Questionnaire",
   "language": "en-US",
+  "id": "990CA274-07E0-4EEE-ACFB-0B8FF6900695",
   "title": "Activity/Fitness",
   "status": "draft",
-  "id": "990CA274-07E0-4EEE-ACFB-0B8FF6900695",
   "meta": {
     "profile": [
       "http://spezi.health/fhir/StructureDefinition/sdf-Questionnaire"
@@ -238,6 +238,14 @@
           "answerOption": [
             {
               "valueCoding": {
+                "id": "e759d5b6-d1d2-4193-c9b7-64b58ecdf5e1",
+                "code": "never",
+                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
+                "display": "Never"
+              }
+            },
+            {
+              "valueCoding": {
                 "id": "5fdbb9ee-604e-4388-9940-45df5dd989a0",
                 "code": "less-than-1x/week",
                 "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
@@ -284,6 +292,14 @@
           "text": "How often do you lift weights?",
           "required": false,
           "answerOption": [
+            {
+              "valueCoding": {
+                "id": "fa334ff8-d5f8-41f1-8bd8-89bd3797b164",
+                "code": "never",
+                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
+                "display": "Never"
+              }
+            },
             {
               "valueCoding": {
                 "id": "5fdbb9ee-604e-4388-9940-45df5dd989a0",
@@ -386,6 +402,14 @@
           "text": "How often do you take group exercise classes? ",
           "required": false,
           "answerOption": [
+            {
+              "valueCoding": {
+                "id": "6e56dafd-1114-4930-afac-c9a29a4ebf8f",
+                "code": "never",
+                "system": "urn:uuid:e903fa38-6686-4765-9218-672435187c38",
+                "display": "Never"
+              }
+            },
             {
               "valueCoding": {
                 "id": "5fdbb9ee-604e-4388-9940-45df5dd989a0",
@@ -834,18 +858,6 @@
           }
         }
       ]
-    },
-    {
-      "linkId": "3a72c7f6-397b-43fd-8d5e-c632dfcd83ad",
-      "type": "time",
-      "text": "What time do you typically go to sleep?",
-      "required": false
-    },
-    {
-      "linkId": "cbddeed7-1a2a-425e-df32-609d7f10fe30",
-      "type": "time",
-      "text": "What time do you typically wake up?",
-      "required": false
     },
     {
       "linkId": "397324dd-5e01-43c6-863b-206a3b6fed9a",

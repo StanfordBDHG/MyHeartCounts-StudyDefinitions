@@ -70,4 +70,7 @@ extension UUID {
     
     static let chronotypeSurveyComponent = UUID(uuidString: "E06CEA4F-D33E-4E75-8B50-B60AB2DE0FDA")!
     static let chronotypeSurveySchedule = UUID(uuidString: "C45380E9-FAC6-4ACE-853D-BBD10481A169")!
+    
+    static let fatigueSurveyComponent = UUID(uuidString: "5F5B5829-75CB-402F-9629-B89EC31F17A6")!
+    static let fatigueSurveySchedule = UUID(uuidString: "CF25025A-2D19-469C-8CF0-1AB70DF25FAB")!
 }
