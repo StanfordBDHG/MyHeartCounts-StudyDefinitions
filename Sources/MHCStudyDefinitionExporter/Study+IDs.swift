@@ -29,6 +29,9 @@ extension UUID {
     static let welcomeArticleComponent = UUID(uuidString: "5D8DE57C-43AF-4DD9-AF19-CBC7D2B6560E")!
     static let welcomeArticleSchedule = UUID(uuidString: "E75810C8-739E-4AE9-AB87-7A2874BE1224")!
     
+    static let week2WhatsNextArticleComponent = UUID(uuidString: "E77B13F1-BB33-4D20-A360-10979C8D969C")!
+    static let week2WhatsNextArticleSchedule = UUID(uuidString: "4E19CDD9-A677-4C0D-8E70-00ECB687E16B")!
+    
     static let ecgArticleComponent = UUID(uuidString: "F6F295B3-35F8-4204-8831-B4CC511B8DBA")!
     static let ecgArticleSchedule = UUID(uuidString: "12F53621-B83D-4DDF-AEC6-C43576CC8F5A")!
     

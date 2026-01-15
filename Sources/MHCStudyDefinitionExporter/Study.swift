@@ -18,6 +18,7 @@ import SpeziStudyDefinition
 
 extension StudyBundle.FileReference {
     static let welcomeArticle = Self(category: .informationalArticle, filename: "Welcome", fileExtension: "md")
+    static let week2WhatsNextArticle = Self(category: .informationalArticle, filename: "Week2WhatsNext", fileExtension: "md")
     
     static let activityFitnessSurvey = Self(category: .questionnaire, filename: "ActivityFitness", fileExtension: "json")
     static let dietScoreSurvey = Self(category: .questionnaire, filename: "Diet", fileExtension: "json")
@@ -209,20 +210,6 @@ let mhcStudyDefinition = StudyDefinition(
         
         // DAY 2
         StudyDefinition.ComponentSchedule(
-            id: .activityFitnessSurveySchedule,
-            componentId: .activityFitnessSurveyComponent,
-            scheduleDefinition: .repeated(.monthly(interval: 6, day: nil, hour: 9, minute: 0), offset: .init(day: 1)),
-            completionPolicy: .anytime,
-            notifications: .enabled(thread: .task)
-        )
-        StudyDefinition.ComponentSchedule(
-            id: .chronotypeSurveySchedule,
-            componentId: .chronotypeSurveyComponent,
-            scheduleDefinition: .once(.event(.activation, offsetInDays: 1, time: nil)),
-            completionPolicy: .anytime,
-            notifications: .enabled(thread: .task)
-        )
-        StudyDefinition.ComponentSchedule(
             id: .ecgScheduleInitial,
             componentId: .ecgComponent,
             scheduleDefinition: .once(.event(.activation, offsetInDays: 1, time: .noon)),
@@ -236,58 +223,85 @@ let mhcStudyDefinition = StudyDefinition(
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task)
         )
-        
-        // DAY 3
         StudyDefinition.ComponentSchedule(
             id: .who5SurveySchedule,
             componentId: .who5SurveyComponent,
-            scheduleDefinition: .repeated(.monthly(interval: 3, day: nil, hour: 6, minute: 0), offset: .init(day: 2)),
-            completionPolicy: .anytime,
-            notifications: .enabled(thread: .task, time: .init(hour: 9))
-        )
-        StudyDefinition.ComponentSchedule(
-            id: .gad7Schedule,
-            componentId: .gad7Component,
-            scheduleDefinition: .repeated(.monthly(interval: 6, day: nil, hour: 6, minute: 0), offset: .init(day: 2)),
+            scheduleDefinition: .repeated(.monthly(interval: 3, day: nil, hour: 6, minute: 0), offset: .init(day: 1)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
         StudyDefinition.ComponentSchedule(
             id: .diseaseQoLSurveySchedule,
             componentId: .diseaseQoLSurveyComponent,
-            scheduleDefinition: .repeated(.weekly(interval: 2, weekday: nil, hour: 6, minute: 0), offset: .init(day: 2)),
+            scheduleDefinition: .repeated(.weekly(interval: 2, weekday: nil, hour: 6, minute: 0), offset: .init(day: 1)),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
         
+        // DAY 3
+        StudyDefinition.ComponentSchedule(
+            id: .chronotypeSurveySchedule,
+            componentId: .chronotypeSurveyComponent,
+            scheduleDefinition: .once(.event(.activation, offsetInDays: 2, time: nil)),
+            completionPolicy: .anytime,
+            notifications: .enabled(thread: .task)
+        )
+        
         // DAY 4
+        StudyDefinition.ComponentSchedule(
+            id: .activityFitnessSurveySchedule,
+            componentId: .activityFitnessSurveyComponent,
+            scheduleDefinition: .repeated(.monthly(interval: 6, day: nil, hour: 9, minute: 0), offset: .init(day: 3)),
+            completionPolicy: .anytime,
+            notifications: .enabled(thread: .task)
+        )
+        
+        // DAY 5
+        StudyDefinition.ComponentSchedule(
+            id: .gad7Schedule,
+            componentId: .gad7Component,
+            scheduleDefinition: .repeated(.monthly(interval: 6, day: nil, hour: 6, minute: 0), offset: .init(day: 4)),
+            completionPolicy: .anytime,
+            notifications: .enabled(thread: .task, time: .init(hour: 9))
+        )
+        
+        // DAY 6
         StudyDefinition.ComponentSchedule(
             id: .exerciseAdequacySurveySchedule,
             componentId: .exerciseAdequacySurveyComponent,
-            scheduleDefinition: .once(.event(.activation, offsetInDays: 3, time: .init(hour: 6))),
+            scheduleDefinition: .once(.event(.activation, offsetInDays: 5, time: .init(hour: 6))),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
         StudyDefinition.ComponentSchedule(
             id: .exerciseMindsetSurveySchedule,
             componentId: .exerciseMindsetSurveyComponent,
-            scheduleDefinition: .once(.event(.activation, offsetInDays: 3, time: .init(hour: 6))),
-            completionPolicy: .anytime,
-            notifications: .enabled(thread: .task, time: .init(hour: 9))
-        )
-        StudyDefinition.ComponentSchedule(
-            id: .susSurveySchedule,
-            componentId: .susSurveyComponent,
-            scheduleDefinition: .once(.event(.activation, offsetInDays: 3, time: .init(hour: 6))),
+            scheduleDefinition: .once(.event(.activation, offsetInDays: 5, time: .init(hour: 6))),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
         
-        // DAY 5
+        // DAY 7
+        StudyDefinition.ComponentSchedule(
+            id: .susSurveySchedule,
+            componentId: .susSurveyComponent,
+            scheduleDefinition: .once(.event(.activation, offsetInDays: 6, time: .init(hour: 6))),
+            completionPolicy: .anytime,
+            notifications: .enabled(thread: .task, time: .init(hour: 9))
+        )
+        StudyDefinition.ComponentSchedule(
+            id: .week2WhatsNextArticleSchedule,
+            componentId: .week2WhatsNextArticleComponent,
+            scheduleDefinition: .once(.event(.activation, offsetInDays: 6, time: .init(hour: 6))),
+            completionPolicy: .anytime,
+            notifications: .disabled
+        )
+        
+        // DAY 8
         StudyDefinition.ComponentSchedule(
             id: .sixMinWalkTestScheduleInitial,
             componentId: .sixMinWalkTestComponent,
-            scheduleDefinition: .once(.event(.activation, offsetInDays: 4, time: .init(hour: 6))),
+            scheduleDefinition: .once(.event(.activation, offsetInDays: 7, time: .init(hour: 6))),
             completionPolicy: .anytime,
             notifications: .enabled(thread: .task, time: .init(hour: 9))
         )
