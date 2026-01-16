@@ -18,4 +18,3 @@ Nota importante:
 Esta puntuación se proporciona sólo con fines de investigación y educativos.
 No es un diagnóstico médico y no debe reemplazar la consulta con su médico.
 La Puntuación de Salud de My Heart Counts está diseñada para fomentar comportamientos de salud positivos y apoyar tu viaje hacia la salud del corazón.
-
