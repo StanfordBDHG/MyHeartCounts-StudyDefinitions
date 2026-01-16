@@ -18,4 +18,4 @@ Our scoring system helps you see your risk at a glance:
 
 Lowering LDL through diet, exercise, and, if needed, medication helps reduce cardiovascular risk.
 LDL targets may differ based on individual risk factors, so discuss your goals with a healthcare provider. Regular testing is important, as high LDL often has no symptoms.
-Aim for lower LDL to protect your heart!"
+Aim for lower LDL to protect your heart!
