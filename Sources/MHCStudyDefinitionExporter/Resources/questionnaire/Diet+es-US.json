@@ -199,7 +199,8 @@
         {
           "linkId": "8fb4064f-448c-45ef-8e77-ff9bd726aabf",
           "type": "display",
-          "text": "Trate de basar todas las comidas en una porción generosa de este grupo, eligiendo tipos integrales cuando pueda.\n• Los alimentos ricos en almidón contienen carbohidratos principalmente en forma de almidón, que proporciona energía. También contienen algo de proteína, minerales, vitaminas y fibra.\n• La fibra ayuda al sistema digestivo a funcionar correctamente, previniendo trastornos intestinales como el estreñimiento.\n• Trate de evitar freír alimentos de este grupo (por ejemplo, papas fritas), o agregar demasiada grasa (por ejemplo, untar mantequilla en el pan), o agregar salsas o aderezos ricos (por ejemplo, salsa de queso en la pasta).",
+          "text": "Trate de basar todas las comidas en una porción generosa de este grupo, eligiendo tipos integrales cuando pueda.\n• Los alimentos ricos en almidón contienen carbohidratos principalmente en forma de almidón, que proporciona energía. También contienen algo de proteína, minerales, vitaminas y fibra.\n• La fibra ayuda al sistema digestivo a funcionar correctamente, previniendo trastornos intestinales como el estreñimiento.\n• Trate de evitar freír alimentos de este grupo (por ejemplo, papas fritas), o agregar demasiada grasa (por ejemplo, untar mantequilla en el pan), o agregar salsas o aderezos grasos (por ejemplo, salsa de queso en la pasta)."
+",
           "required": false
         }
       ]
@@ -258,7 +259,7 @@
         {
           "linkId": "1e45472d-72ce-4ba4-848a-c1c3dba6dd48",
           "type": "display",
-          "text": "Si come alimentos y bebidas que contienen azúcar, cómalos principalmente durante las comidas en lugar de entre comidas, para reducir el riesgo de caries dental.\n\nEl azúcar puede contar muchas calorías adicionales durante el día, especialmente si agrega azúcar a cada bebida.",
+          "text": "Si come alimentos y bebidas que contienen azúcar, cómalos principalmente durante las comidas en lugar de entre comidas, para reducir el riesgo de caries dental.\n\nEl azúcar puede añadir muchas calorías adicionales durante el día, especialmente si agrega azúcar a cada bebida.",
           "required": false
         }
       ]
