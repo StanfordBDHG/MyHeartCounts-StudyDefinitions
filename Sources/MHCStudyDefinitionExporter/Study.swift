@@ -138,7 +138,6 @@ let mhcStudyDefinition = StudyDefinition(
                     SampleType.gad7
                 ] as [any AnySampleType]
             ),
-            historicalDataCollection: .enabled(.last(DateComponents(year: 10))),
             optionalSampleTypes: [
                 SampleType.allergyRecord,
                 SampleType.clinicalNoteRecord,
@@ -149,7 +148,8 @@ let mhcStudyDefinition = StudyDefinition(
                 SampleType.procedureRecord,
                 SampleType.vitalSignRecord,
                 SampleType.coverageRecord
-            ]
+            ],
+            historicalDataCollection: .enabled(.last(DateComponents(year: 10)))
         )),
         
         .informational(.init(id: .welcomeArticleComponent, fileRef: .welcomeArticle)),
