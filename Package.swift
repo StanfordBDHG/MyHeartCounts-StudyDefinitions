@@ -27,7 +27,7 @@ let package = Package(
         .executable(name: "MHCStudyDefinitionExporterCLI", targets: ["MHCStudyDefinitionExporterCLI"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/SpeziStudy.git", revision: "1da82264ed6c82fa1bb6249c0b75b93612839f1a"),
+        .package(url: "https://github.com/StanfordSpezi/SpeziStudy.git", from: "0.1.19"),
         .package(url: "https://github.com/StanfordSpezi/SpeziFoundation.git", from: "2.4.0"),
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.6.2")
     ],
