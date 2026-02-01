@@ -34,13 +34,11 @@ Use this tool to track your health trends over time.
 
 
 ## Support and Contact
-- For questions or comments, email us at [myheartcounts@stanford.edu](mailto:myheartcounts@stanford.edu).
-- We will respond as quickly as possible!
+For questions or comments, email us at [myheartcounts@stanford.edu](mailto:myheartcounts@stanford.edu).
+We will respond as quickly as possible!
 
 
 ## Thank You!
 Thank you for participating in our study!
 
 \- The My Heart Counts Team
-
-
