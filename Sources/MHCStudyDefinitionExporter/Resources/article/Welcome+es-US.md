@@ -1,6 +1,6 @@
 ---
-title: Bienvenidos a My Heart Counts
 id: 7ED0CE42-7C0D-471D-A4C5-B8D67199890C
+title: Bienvenidos a My Heart Counts
 lede: Infórmese sobre el estudio
 ---
 
@@ -23,7 +23,7 @@ Entendemos que tu tiempo es valioso, por lo que procuramos mantener al mínimo e
 
 ## Tareas activas y actividades
 #### (Caminata de seis minutos, carrera de 12 minutos, ECG)
-- **Finalización:** Si tsu condición física lo permite, intenta realizar cada tarea al menos una vez.
+- **Finalización:** Si tu condición física lo permite, intenta realizar cada tarea al menos una vez.
 - **Repetición:** Lo ideal es contar con varios puntos de datos, por lo que te animamos a completar más de una vez las tarea que te resulten más agradable.
 - **Acceso a las tareas:** Si no puedes encontrar las tareas activas, haz clic en el ícono de la persona caminando en la parte superior izquierda de la pestaña de próximas tareas para ir a las tareas activas.
 
@@ -43,3 +43,4 @@ Responderemos lo antes posible.
 Gracias por participar en nuestro estudio.
 
 \- El equipo de My Heart Counts
+
