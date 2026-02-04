@@ -1,12 +1,11 @@
 ---
-title: Welcome to My Heart Counts
-id: 7ED0CE42-7C0D-471D-A4C5-B8D67199890C
+id: 23836EC3-AE2E-4899-B0DC-DF68F50A4EB9
+title: About SensorKit and the Dashboard
 ---
 
 # Data Permissions and Dashboard
 
-
-## SensorKit
+## Sensorkit
 If you have an Apple Watch, SensorKit can provide researchers with more in depth information.
 To turn this on, you need to first toggle on "Sensor & Usage Data Collection" in settings.
 To do this, go to: **Settings > Privacy & Security > Research Sensor & Usage Data > Toggle ON**

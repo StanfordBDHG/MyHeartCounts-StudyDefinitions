@@ -153,6 +153,7 @@ let mhcStudyDefinition = StudyDefinition(
         )),
         
         .informational(.init(id: .welcomeArticleComponent, fileRef: .welcomeArticle)),
+        .informational(.init(id: .week2WhatsNextArticleComponent, fileRef: .week2WhatsNextArticle)),
         
         .questionnaire(.init(id: .dietScoreSurveyComponent, fileRef: .dietScoreSurvey)),
         .questionnaire(.init(id: .nicotineExposureSurveyComponent, fileRef: .nicotineScoreSurvey)),
