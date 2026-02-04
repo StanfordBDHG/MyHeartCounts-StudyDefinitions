@@ -5,7 +5,7 @@ title: Permisos de datos y panel
 
 # Permisos de datos y panel
 
-## Sensorkit
+## SensorKit
 Si tienes un Apple Watch, SensorKit puede proporcionar a los investigadores información más detallada.
 Para activar esta función, primero debes activar “Sensor & Usage Data Collection” en Configuración.
 Para hacerlo, dirígete a: **Configuración > Privacidad y seguridad > Research Sensor & Usage Data > Activar**

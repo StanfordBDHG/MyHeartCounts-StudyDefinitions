@@ -5,7 +5,7 @@ title: About SensorKit and the Dashboard
 
 # Data Permissions and Dashboard
 
-## Sensorkit
+## SensorKit
 If you have an Apple Watch, SensorKit can provide researchers with more in depth information.
 To turn this on, you need to first toggle on "Sensor & Usage Data Collection" in settings.
 To do this, go to: **Settings > Privacy & Security > Research Sensor & Usage Data > Toggle ON**
